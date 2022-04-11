@@ -12,4 +12,5 @@ public class PostController {
 	public String mainView() {
 		return "post/main";
 	}
+
 }

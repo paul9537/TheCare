@@ -1,13 +1,25 @@
 @charset "UTF-8";
 
-wrap {
-	width:1200px;
+#wrap {
+	width:1980px;
+	margin:auto;
 }
 header {
 	height:80px;
 }
+.logo {
+	font-size:30px;
+}
 section {
-	height:640px;
+	height:900px;
+}
+.login-box {
+	width:450px;
+	height:600px;
+}
+.signup-box {
+	width:500px;
+	height:800px;
 }
 footer {
 	height:80px;

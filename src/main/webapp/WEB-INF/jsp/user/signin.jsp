@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>The Care Main Page</title>
+<title>The Care SignIn View</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -16,16 +16,33 @@
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-
+	
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="bg-warning">
-		
+		<section class="bg-warning d-flex justify-content-center align-items-center">
+			<div>
+				<div class="login-box d-flex justify-content-center align-items-start bg-white border rounded">		
+					<div class="w-100 p-5">			
+						<h2 class="text-center">로그인</h2>
+						<br>
+						
+						<input type="text" id="loginIdInput" class="form-control mt-3" placeholder="아이디">
+						<input type="password" id="passwordInput" class="form-control mt-3" placeholder="패스워드">
+						<button id="loginBtn" type="button" class="btn btn-primary btn-block mt-3">로그인</button>
+						<hr/>
+					
+						<div class="text-center text-secondary">비밀번호를 잊으셨나요?</div>
+					</div>
+				</div>
+				<div class="mt-4 p-3 d-flex justify-content-center align-items-start bg-white  border rounded">
+					계정이 없으신가요? <a href="/user/signup_view" class="ml-2">가입하기</a>
+				</div>
+			</div>
 		</section>
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
-	
+
 </body>
 </html>
