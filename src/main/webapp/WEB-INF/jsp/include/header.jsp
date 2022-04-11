@@ -15,14 +15,10 @@
 						<li class="nav-item">
 						  <a class="nav-link" href="#">일자리 찾기</a>
 						</li>
+						<li class="nav-item">
+							<a href="/user/signin_view" class="nav-link">로그인</a>
+						</li>
 				    </ul>
 				</div>
-				<div class="d-flex justify-content-end">
-					<a href="#" class="nav-link">로그인</a>
-				</div>
 			</nav>
-			
-			<div class="">
-				<a href="#" class="ml-2">로그인</a>
-			</div>
 		</header>
