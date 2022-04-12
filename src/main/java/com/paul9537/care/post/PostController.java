@@ -13,4 +13,13 @@ public class PostController {
 		return "post/main";
 	}
 
+	@GetMapping("/babysitter_view")
+	public String babysitterView() {
+		return "post/babysitter";
+	}
+	
+	@GetMapping("/petsitter_view")
+	public String petsitterView() {
+		return "post/petsitter";
+	}
 }

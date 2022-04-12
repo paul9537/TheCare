@@ -21,6 +21,14 @@ section {
 	width:500px;
 	height:800px;
 }
+.postList-box {
+	width:600px;
+	
+}
+.post-box {
+	width:600px;
+	height:300px;
+}
 footer {
 	height:80px;
 }

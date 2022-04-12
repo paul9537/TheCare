@@ -69,17 +69,60 @@
 	
 	<script>
 	$(document).ready(function() {
+		var isChecked = false;
+		var isDuplicate = true;
+		
+		$("#loginIdInput").on("input", function() {
+			isChecked = false;
+			isDuplicate = true;
+			
+		}); 
+		
+		
+		$("#checkBtn").on("click", function() {
+			let loginId = $("#loginIdInput").val();
+			
+			isChecked = true
+			
+			if(loginId == "") {
+				alert("아이디를 입력해주세요");
+				return ;
+			}
+			
+			$.ajax({
+				type:"get",
+				url:"/user/isDuplicate",
+				data:{"loginId":loginId},
+				success:function(data) {
+					if(data.is_duplicate) {
+						isDuplicate = true;
+						alert("이미 사용중인 아이디입니다");
+						return ;
+					} else{
+						isDuplicate = false;
+						alert("사용 가능한 아이디입니다");
+						return ;
+					}
+					
+				},
+				error:function() {
+					alert("중복체크 에러");
+				}
+				
+			});
+			
+			
+		});
 		
 		$("#signupBtn").on("click", function() {
 			let type = $('input[name="type"]:checked').val();
 			let loginId = $("#loginIdInput").val().trim();
 			let password = $("#passwordInput").val();
 			let passwordCheck = $("#passwordCheckInput").val();
-			let userName = $("#userNameInput").val().trim();
+			let name = $("#userNameInput").val().trim();
 			let email = $("#emailInput").val().trim();
-			let sido = $("#sido1").val();
-			let gugun = $("#gugn1").val();
-			
+			let address = $("#sido1").val() + $("#gugun1").val();
+
 			if(loginId == "") {
 				alert("아이디를 입력해주세요");
 				return ;
@@ -95,7 +138,12 @@
 				return ;
 			}
 			
-			if(userName == "") {
+			if(passwordCheck != password) {
+				alert("비밀번호를 확인해주세요");
+				return ;
+			}
+			
+			if(name == "") {
 				alert("이름을 입력해주세요");
 				return ;
 			}
@@ -105,13 +153,37 @@
 				return ;
 			}
 			
-			if(sido == "시/도 선택") {
+			if(address == "시/도 선택") {
 				alert("지역을 선택해주세요");
 				return ;
 			}
 			
+			if(isChecked == false) {
+				alert("아이디 중복체크를 해주세요");
+				return ;
+			}
+			
+			if(isDuplicate) {
+				alert("아이디가 중복되었습니다");
+				return ;
+			}
+			
+			
 			$.ajax({
-				
+				url:"/user/signup",
+				type:"post",
+				data:{"type":type, "loginId":loginId, "password":password, "name":name, "email":email, "address":address},
+				success:function(data) {
+					if(data.result == "success") {
+						location.href="/user/signin_view";
+					} else {
+						alert("회원가입 실패");
+					}
+				},
+				error:function() {
+					alert("회원가입 에러");
+				}
+			
 			});
 			
 		});

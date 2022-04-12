@@ -29,20 +29,61 @@
 						
 						<input type="text" id="loginIdInput" class="form-control mt-3" placeholder="아이디">
 						<input type="password" id="passwordInput" class="form-control mt-3" placeholder="패스워드">
-						<button id="loginBtn" type="button" class="btn btn-primary btn-block mt-3">로그인</button>
+						<button id="loginBtn" type="button" class="btn btn-info btn-block mt-3">로그인</button>
 						<hr/>
-					
-						<div class="text-center text-secondary">비밀번호를 잊으셨나요?</div>
+
+						<div class="mt-4 p-3 d-flex justify-content-center align-items-start bg-white border rounded">
+							계정이 없으신가요? <a href="/user/signup_view" class="ml-2">가입하기</a>
+						</div>
 					</div>
-				</div>
-				<div class="mt-4 p-3 d-flex justify-content-center align-items-start bg-white  border rounded">
-					계정이 없으신가요? <a href="/user/signup_view" class="ml-2">가입하기</a>
 				</div>
 			</div>
 		</section>
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("#loginBtn").on("click", function() {
+				let loginId = $("#loginIdInput").val();
+				let password = $("#passwordInput").val();
+				
+				if(loginId == "") {
+					alert("아이디를 입력해주세요");
+					return ;
+				}
+				
+				if(password == "") {
+					alert("비밀번호를 입력해주세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/user/signin",
+					data:{"loginId":loginId, "password":password},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("로그인 성공");
+							location.href="/post/babysitter_view";
+						}
+					},
+					error:function() {
+						alert("로그인 에러");
+					}
+					
+				});
+				
+				
+			});
+			
+			
+		});
+	
+	
+	</script>
 
 </body>
 </html>
