@@ -17,4 +17,9 @@ public class UserController {
 	public String signupView() {
 		return "user/signup";
 	}
+	
+	@GetMapping("/profile_edit")
+	public String profileEdit() {
+		return "user/profileEdit";
+	}
 }

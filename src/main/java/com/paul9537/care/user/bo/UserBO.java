@@ -13,11 +13,11 @@ public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
 	
-	public int signup(String type, String loginId, String password, String name, String email, String address) {
+	public int signup(String userType, String careType, String loginId, String password, String name, String email, String address) {
 	
 		String encryptPassword = EncryptUtils.md5(password);
 		
-		return userDAO.insertUser(type, loginId, encryptPassword, name, email, address);
+		return userDAO.insertUser(userType, careType, loginId, encryptPassword, name, email, address);
 	}
 	
 	public boolean isDuplicate(String loginId) {

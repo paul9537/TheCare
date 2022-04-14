@@ -9,7 +9,8 @@ import com.paul9537.care.user.model.User;
 public interface UserDAO {
 
 	public int insertUser(
-			@Param("type") String type,
+			@Param("userType") String userType,
+			@Param("careType") String careType,
 			@Param("loginId") String loginId,
 			@Param("password") String password,
 			@Param("name") String name,

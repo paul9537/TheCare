@@ -20,8 +20,8 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="bg-warning">
-			<img src="https://cdn.pixabay.com/photo/2015/04/01/18/52/playground-702823_1280.jpg" width="1920px">
+		<section>
+			<img src="https://cdn.pixabay.com/photo/2015/04/01/18/52/playground-702823_1280.jpg" width="1200px">
 		</section>
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

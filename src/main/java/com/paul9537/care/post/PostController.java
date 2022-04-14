@@ -22,4 +22,9 @@ public class PostController {
 	public String petsitterView() {
 		return "post/petsitter";
 	}
+	
+	@GetMapping("/profile_view")
+	public String profileView() {
+		return "post/profile";
+	}
 }

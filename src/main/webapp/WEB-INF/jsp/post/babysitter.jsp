@@ -31,10 +31,10 @@
 						<div>최성윤</div>
 						<hr>
 						
-						<div class="d-flex">
-							<img src="#" width="150px">
+						<div class="d-flex ml-3 p-2">
+							<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" width="150px">
 							
-							<div>
+							<div class="ml-3">
 								<h5>최성윤</h5>
 								<div class="small text-secondary">서울시특별시 강남구</div>
 								<div class="small text-secondary">28세</div>

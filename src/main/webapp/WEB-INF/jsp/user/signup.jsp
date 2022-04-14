@@ -31,8 +31,17 @@
 							<div class="d-flex justify-content-center">
 								<div>맘회원 / 시터회원</div>
 								<div class="ml-5">
-									<label>맘회원<input type="radio" class="ml-1" name="type" value="mom" checked></label>
-									<label class="ml-3">시터회원<input type="radio" class="ml-1" name="type" value="sitter"></label>
+									<label>맘회원<input type="radio" class="ml-1" name="userType" value="mom" checked></label>
+									<label class="ml-3">시터회원<input type="radio" class="ml-1" name="userType" value="sitter"></label>
+								</div>
+							</div>
+							
+							<!-- 아이 돌봄 / 반려견 돌봄 -->
+							<div class="d-flex justify-content-center">
+								<div>아이 돌봄 / 반려견 돌봄</div>
+								<div class="ml-5">
+									<label>아이<input type="radio" id="childCB" class="ml-1" name="careType" value="child" checked></label>
+									<label class="ml-3">반려견<input id="petCB" type="radio" class="ml-1" name="careType" value="pet"></label>
 								</div>
 							</div>
 							
@@ -115,7 +124,8 @@
 		});
 		
 		$("#signupBtn").on("click", function() {
-			let type = $('input[name="type"]:checked').val();
+			let userType = $('input[name="userType"]:checked').val();
+			let careType = $('input[name="careType"]:checked').val();
 			let loginId = $("#loginIdInput").val().trim();
 			let password = $("#passwordInput").val();
 			let passwordCheck = $("#passwordCheckInput").val();
@@ -172,7 +182,7 @@
 			$.ajax({
 				url:"/user/signup",
 				type:"post",
-				data:{"type":type, "loginId":loginId, "password":password, "name":name, "email":email, "address":address},
+				data:{"userType":userType, "careType":careType, "loginId":loginId, "password":password, "name":name, "email":email, "address":address},
 				success:function(data) {
 					if(data.result == "success") {
 						location.href="/user/signin_view";

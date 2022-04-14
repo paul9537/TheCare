@@ -22,4 +22,7 @@
 				    </ul>
 				</div>
 			</nav>
+		   	<div class="float-right">
+				<a href="/user/signin_view" class="nav-link">로그인</a>
+		   	</div>
 		</header>
