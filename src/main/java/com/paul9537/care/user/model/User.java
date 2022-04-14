@@ -4,7 +4,8 @@ import java.util.Date;
 
 public class User {
 	private int id;
-	private String type;
+	private String userType;
+	private String careType;
 	private String loginId;
 	private String password;
 	private String name;
@@ -18,11 +19,17 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getType() {
-		return type;
+	public String getUserType() {
+		return userType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+	public String getCareType() {
+		return careType;
+	}
+	public void setCareType(String careType) {
+		this.careType = careType;
 	}
 	public String getLoginId() {
 		return loginId;
