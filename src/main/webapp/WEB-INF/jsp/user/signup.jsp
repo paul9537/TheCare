@@ -51,6 +51,11 @@
 								<button class="btn btn-info" id="checkBtn">중복확인</button>
 							</div>
 							
+							<!-- 닉네임 -->
+							<div class="mt-3">
+								<input type="text" class="form-control" id="nicknameInput" placeholder="닉네임">
+							</div>
+							
 							<!-- 비밀번호 -->
 							<div>
 								<input type="password" class="form-control mt-3" id="passwordInput" placeholder="비밀번호">
@@ -120,13 +125,13 @@
 				
 			});
 			
-			
 		});
 		
 		$("#signupBtn").on("click", function() {
 			let userType = $('input[name="userType"]:checked').val();
 			let careType = $('input[name="careType"]:checked').val();
 			let loginId = $("#loginIdInput").val().trim();
+			let nickname = $("#nicknameInput").val().trim();
 			let password = $("#passwordInput").val();
 			let passwordCheck = $("#passwordCheckInput").val();
 			let name = $("#userNameInput").val().trim();
@@ -135,6 +140,11 @@
 
 			if(loginId == "") {
 				alert("아이디를 입력해주세요");
+				return ;
+			}
+			
+			if(nickname == "") {
+				alert("닉네임을 입력해주세요");
 				return ;
 			}
 			
@@ -182,7 +192,7 @@
 			$.ajax({
 				url:"/user/signup",
 				type:"post",
-				data:{"userType":userType, "careType":careType, "loginId":loginId, "password":password, "name":name, "email":email, "address":address},
+				data:{"userType":userType, "careType":careType, "loginId":loginId, "nickname":nickname, "password":password, "name":name, "email":email, "address":address},
 				success:function(data) {
 					if(data.result == "success") {
 						location.href="/user/signin_view";

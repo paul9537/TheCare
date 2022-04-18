@@ -23,9 +23,9 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
 		<section>
-			<div>
-					<div class="signup-box bg-white border rounded">
-						<div class="w-100 p-5">
+			<div class="d-flex justify-content-center">
+					<div class="signup-box border rounded mt-5">
+						<div class="p-5">
 							<h2 class="text-center">프로필 수정</h2>
 							<br>
 							
@@ -38,9 +38,9 @@
 								</div>
 							</div>
 							
-							<!-- 아이디 -->
+							<!-- 닉네임 -->
 							<div class="d-flex justify-content-center mt-3">
-								<input type="text" class="form-control" id="loginIdInput" placeholder="아이디">
+								<input type="text" class="form-control" id="nicknameInput" placeholder="닉네임">
 								<button class="btn btn-info" id="checkBtn">중복확인</button>
 							</div>
 							
@@ -81,14 +81,14 @@
 							<div class="child-activity mt-3">
 								<div class="font-weight-bold">가능 활동을 선택해주세요</div>
 								<div class="d-flex justify-content-between">
-									<label>실내놀이<input type="checkbox" name="babyActivity" value=""></label>
-									<label>야외활동<input type="checkbox" name="babyActivity" value=""></label>
-									<label>등하원 돕기<input type="checkbox" name="babyActivity" value=""></label>
+									<label>실내놀이<input type="checkbox" name="babyActivity" value="indoorActivity"></label>
+									<label>야외활동<input type="checkbox" name="babyActivity" value="outdoorActivity"></label>
+									<label>등하원 돕기<input type="checkbox" name="babyActivity" value="dropoff"></label>
 								</div>
 								<div class="d-flex justify-content-between">
-									<label>책 읽기<input type="checkbox" name="babyActivity" value=""></label>
-									<label>밥 챙겨주기<input type="checkbox" name="babyActivity" value=""></label>
-									<label>간단 청소<input type="checkbox" name="babyActivity" value=""></label>
+									<label>책 읽기<input type="checkbox" name="babyActivity" value="read"></label>
+									<label>밥 챙겨주기<input type="checkbox" name="babyActivity" value="feed"></label>
+									<label>간단 청소<input type="checkbox" name="babyActivity" value="cleanup"></label>
 								</div>
 							</div>
 							
@@ -96,14 +96,14 @@
 							<div class="pet-activity mt-3 d-none">
 								<div class="font-weight-bold">가능 활동을 선택해주세요</div>
 								<div class="d-flex justify-content-between">
-									<label>실내놀이<input type="checkbox" name="petActivity" value=""></label>
-									<label>야외활동<input type="checkbox" name="petActivity" value=""></label>
-									<label>간단 청소<input type="checkbox" name="petActivity" value=""></label>
+									<label>실내놀이<input type="checkbox" name="petActivity" value="indoorActivity"></label>
+									<label>야외활동<input type="checkbox" name="petActivity" value="outdoorActivity"></label>
+									<label>간단 청소<input type="checkbox" name="petActivity" value="cleanUp"></label>
 								</div>
 								<div class="d-flex justify-content-between">
-									<label>배변 훈련<input type="checkbox" name="petActivity" value=""></label>
-									<label>행동 교정<input type="checkbox" name="petActivity" value=""></label>
-									<label>사회화 훈련<input type="checkbox" name="petActivity" value=""></label>
+									<label>배변 훈련<input type="checkbox" name="petActivity" value="pottyTrain"></label>
+									<label>행동 교정<input type="checkbox" name="petActivity" value="behaviorTrain"></label>
+									<label>사회화 훈련<input type="checkbox" name="petActivity" value="socialTrain"></label>
 								</div>
 							</div>
 							
@@ -122,6 +122,42 @@
 	
 	<script>
 		$(document).ready(function() {
+			var isChecked = false;
+			var isDuplicate = true;
+			
+			$("#checkBtn").on("click", function() {
+				let nickname = $("#nicknameInput").val();
+				
+				isChecked = true
+				
+				if(nickname == "") {
+					alert("아이디를 입력해주세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"get",
+					url:"/user/nicknameDuplicate",
+					data:{"nickname":nickname},
+					success:function(data) {
+						if(data.isDuplicate) {
+							isDuplicate = true;
+							alert("이미 사용중인 닉네임입니다");
+							return ;
+						} else{
+							isDuplicate = false;
+							alert("사용 가능한 닉네임입니다");
+							return ;
+						}
+						
+					},
+					error:function() {
+						alert("중복체크 에러");
+					}
+					
+				});
+				
+			});
 			
 			$("#childCB").on("click", function() {
 				$(".pet-activity").addClass("d-none");

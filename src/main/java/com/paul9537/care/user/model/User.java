@@ -7,6 +7,7 @@ public class User {
 	private String userType;
 	private String careType;
 	private String loginId;
+	private String nickname;
 	private String password;
 	private String name;
 	private String email;
@@ -72,6 +73,12 @@ public class User {
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 	

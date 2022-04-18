@@ -29,12 +29,13 @@ public class UserRestController {
 			@RequestParam("userType") String userType,
 			@RequestParam("careType") String careType,
 			@RequestParam("loginId") String loginId,
+			@RequestParam("nickname") String nickname,
 			@RequestParam("password") String password,
 			@RequestParam("name") String name,
 			@RequestParam("email") String email,
 			@RequestParam("address") String address) {
 		
-		int count = userBO.signup(userType, careType, loginId, password, name, email, address);
+		int count = userBO.signup(userType, careType, loginId, nickname, password, name, email, address);
 		
 		Map<String, String> result = new HashMap<>();
 		
@@ -55,6 +56,18 @@ public class UserRestController {
 		Map<String, Boolean> result = new HashMap<>();
 		
 		result.put("is_duplicate", isDuplicate);
+		
+		return result;
+	}
+	
+	@GetMapping("/nicknameDuplicate")
+	public Map<String, Boolean> nicknameDuplicate(@RequestParam("nickname") String nickname) {
+		
+		boolean isDuplicate = userBO.nicknameDuplicate(nickname);
+		
+		Map<String, Boolean> result = new HashMap<>();
+		
+		result.put("isDuplicate", isDuplicate);
 		
 		return result;
 	}

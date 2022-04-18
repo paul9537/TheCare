@@ -12,12 +12,15 @@ public interface UserDAO {
 			@Param("userType") String userType,
 			@Param("careType") String careType,
 			@Param("loginId") String loginId,
+			@Param("nickname") String nickname,
 			@Param("password") String password,
 			@Param("name") String name,
 			@Param("email") String email,
 			@Param("address") String address);
 	
 	public int selectDuplicate(@Param("loginId") String loginId);
+	
+	public int selectNicknameDuplicate(@Param("nickname") String nickname);
 	
 	public User selectUser(
 			@Param("loginId") String loginId,
