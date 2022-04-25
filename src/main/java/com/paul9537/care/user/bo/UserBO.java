@@ -2,7 +2,9 @@ package com.paul9537.care.user.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.paul9537.care.common.FileManagerService;
 import com.paul9537.care.common.EncryptUtils;
 import com.paul9537.care.user.dao.UserDAO;
 import com.paul9537.care.user.model.User;
@@ -46,4 +48,23 @@ public class UserBO {
 		
 		return userDAO.selectUser(loginId, encryptPassword);
 	}
+	
+	public int addProfile(int userId, String careType, String nickname, MultipartFile file, int age, int wage, String information, String address, String possibleDays, String possibleActivity) {
+		
+		String filePath = FileManagerService.saveFile(userId, file);
+		
+		int count = userDAO.selectProfile(userId);
+		
+		if(count == 0) {
+			return userDAO.insertProfile(userId, careType, nickname, filePath, age, wage, information, address, possibleDays, possibleActivity);
+		} else {
+			return userDAO.updateProfile(userId, careType, nickname, filePath, age, wage, information, address, possibleDays, possibleActivity);
+		}
+		
+		
+		
+
+	}
+	
+	
 }

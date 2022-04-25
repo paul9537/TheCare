@@ -29,12 +29,12 @@
 							<h2 class="text-center">프로필 수정</h2>
 							<br>
 							
-							<!-- 맘회원 / 시터회원 -->
+							<!-- 아이돌봄 / 반려견 돌봄 -->
 							<div class="d-flex justify-content-center">
 								<div>아이 돌봄 / 반려견 돌봄</div>
 								<div class="ml-5">
-									<label>아이<input type="radio" id="childCB" class="ml-1" name="type" value="child" checked></label>
-									<label class="ml-3">반려견<input id="petCB" type="radio" class="ml-1" name="type" value="pet"></label>
+									<label>아이<input type="radio" id="childCB" class="ml-1" name="careType" value="child" checked></label>
+									<label class="ml-3">반려견<input id="petCB" type="radio" class="ml-1" name="careType" value="pet"></label>
 								</div>
 							</div>
 							
@@ -49,13 +49,13 @@
 							<a href="#" id="imageIcon" class="form-control btn btn-info my-2"><i class="big-icon bi bi-image text-dark"> 이미지 파일 업로드</i></a>
 							
 							<!-- 나이 -->
-							<input type="text" class="form-control" placeholder="나이">
+							<input type="text" id="ageInput" class="form-control" placeholder="나이">
 							
 							<!-- 희만시급 -->
-							<input type="text" class="form-control mt-2" placeholder="희망시급" >
+							<input type="text" id="wageInput" class="form-control mt-2" placeholder="희망시급" >
 							
 							<!-- 경력 / 아이정보 -->
-							<textarea class="form-control mt-2" placeholder="경력 / 아이정보를 입력해주세요"></textarea>
+							<textarea id="informationInput" class="form-control mt-2" placeholder="경력 / 아이정보를 입력해주세요"></textarea>
 							
 							<!-- 시도구군 -->
 							<div class="d-flex mt-3">
@@ -124,6 +124,81 @@
 		$(document).ready(function() {
 			var isChecked = false;
 			var isDuplicate = true;
+			var possibleDays = [];
+			var possibleBabyActivity = [];
+			var possiblePetActivity = [];
+			var possibleActivity = [];
+			
+			$("#profileEditBtn").on("click", function() {
+				let careType = $('input[name="careType"]:checked').val();
+				let nickname = $("#nicknameInput").val().trim();
+				let age = $("#ageInput").val();
+				let wage = $("#wageInput").val();
+				let information = $("#informationInput").val();
+				let address = $("#sido1").val() + " " + $("#gugun1").val();
+				let possibleDay = $('input[name="day"]:checked').val();
+
+				$('input[name="day"]:checked').each(function() {
+					var daysChk = $(this).val();
+					possibleDays.push(daysChk);
+				});
+				
+				$('input[name="babyActivity"]:checked').each(function() {
+					var babyActivityChk = $(this).val();
+					possibleBabyActivity.push(babyActivityChk);
+				});
+				
+				$('input[name="petActivity"]:checked').each(function() {
+					var petActivityChk = $(this).val();
+					possiblePetActivity.push(petActivityChk);
+				});
+				
+				possibleActivity.push(possibleBabyActivity);
+				possibleActivity.push(possiblePetActivity);
+				
+				alert(possibleActivity);
+				
+				if($("#fileInput")[0].files.length == 0) {
+					alert("파일을 선택해주세요");
+					return ;
+				}
+				
+				let formData = new FormData();
+				
+				formData.append("careType", careType);
+				formData.append("age", age);
+				formData.append("wage", wage);
+				formData.append("information", information);
+				formData.append("address", address);
+				formData.append("possibleDays", possibleDays);
+				formData.append("possibleActivity", possibleActivity);
+				formData.append("file", $("#fileInput")[0].files[0]);
+				
+				$.ajax({
+					url:"/user/profile_edit",
+					type:"post",
+					data:formData,
+					enctype:"multipart/form-data",
+					processData:false,
+					contentType:false,
+					success:function(data) {
+						if(data.result == "success") {
+							alert("프로필 수정 성공");
+							location.href="/post/profile_view";
+						} else {
+							alert("프로필 수정 실패");
+						}
+					},
+					error:function() {
+						alert("프로필 수정 에러");
+					}
+				});
+				
+			});
+			
+			$("#imageIcon").on("click", function() {
+				$("#fileInput").click();
+			});
 			
 			$("#checkBtn").on("click", function() {
 				let nickname = $("#nicknameInput").val();

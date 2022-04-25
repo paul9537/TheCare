@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,37 +27,83 @@
 				<button type="button" class="btn btn-info float-right mr-3 mt-3">후기</button>
 				
 				<!-- 프로필 상단 정보 -->
+				<c:set var="profile" value="${profile }" />
+				<c:set var="email" value="${email }" />
+				
 				<div class="d-flex border-bottom p-3">
 					<div class="image-box">
-						<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" width="300px">
+						<img src="${profile.imagePath }" width="300px">
 					</div>
 					<div class="ml-5">
-						<h2>paul9537</h2>
+						<h2>${profile.nickname }</h2>
 						<h4 class="mt-1">Rating 4.7</h4>
 						<div class="mt-4">
 							<!-- 이메일 -->
-							<h5>paul9537@hotmail.com</h5>
+							<h5>${email }</h5>
 							<!-- 지역 -->
 							<div class="mt-4">
 								<h4>지역</h4>
-								<h4>서울시 강남구</h4>
+								<h4>${profile.address }</h4>
 							</div>
 						</div>
 						<div class="d-flex mt-4">
 							<!-- 방문 가능 일정 -->
 							<div>
 								<h4>방문 가능 일정</h4>
-								<h5>월 화 수 목 금 토 일</h5>
+									<h5>
+									<c:if test="${fn:contains(profile.possibleDays, 'monday') }" >
+										<span class="text-danger">월</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'monday') }" >
+										월
+									</c:if>
+									<c:if test="${fn:contains(profile.possibleDays, 'tuesday') }" >
+										<span class="text-danger">화</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'tuesday') }" >
+										화
+									</c:if>
+									<c:if test="${fn:contains(profile.possibleDays, 'wednesday') }" >
+										<span class="text-danger">수</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'wednesday') }" >
+										수
+									</c:if>
+									<c:if test="${fn:contains(profile.possibleDays, 'thursday') }" >
+										<span class="text-danger">목</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'thursday') }" >
+										목
+									</c:if>
+									<c:if test="${fn:contains(profile.possibleDays, 'friday') }" >
+										<span class="text-danger">금</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'friday') }" >
+										금
+									</c:if>
+									<c:if test="${fn:contains(profile.possibleDays, 'saturday') }" >
+										<span class="text-danger">토</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'saturday') }" >
+										토
+									</c:if>
+									<c:if test="${fn:contains(profile.possibleDays, 'sunday') }" >
+										<span class="text-danger">일</span>
+									</c:if>
+									<c:if test="${not fn:contains(profile.possibleDays, 'sunday') }" >
+										일
+									</c:if>
+									</h5>
 							</div>
 							<!-- 희망 시급 -->
 							<div class="ml-5">
 								<h4>희망 시급</h4>
-								<h5>15000원</h5>
+								<h5>${profile.wage }원</h5>
 							</div>
 							<!-- 나이대 -->
 							<div class="ml-5">
-								<h4>나이대</h4>
-								<h5>20대</h5>
+								<h4>나이</h4>
+								<h5>${profile.age }</h5>
 							</div>	
 						</div>
 					</div>
@@ -67,12 +114,12 @@
 			<div class="p-3 mt-3">
 				<div>
 					<!-- 프로필 수정 버튼 -->
-					<button type="button" class="btn btn-info float-right">수정</button>
+					<a href="/user/profile_edit"><button type="button" class="btn btn-info float-right">수정</button></a>
 					<!-- 소개 -->
 					<div>
 						<h4>소개</h4>
 						<div class="introduce-box">
-							<h5>베이비시터 일 3년 이상 했고 현제 월수금만 가능합니다.이메일로 연락 부탁드립니다.</h5>
+							<h5>${profile.information }</h5>
 						</div>
 					</div>
 					<!-- 가능 활동 -->

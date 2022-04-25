@@ -23,7 +23,6 @@ section {
 }
 .postList-box {
 	width:600px;
-	
 }
 .post-box {
 	width:600px;
@@ -42,4 +41,17 @@ footer {
 }
 textarea {
 	resize:none;
+}
+#postIcon {
+	font-size:45px;
+	color:black;
+}
+.postIconDiv {
+	position:fixed;
+	right:45px;
+	bottom:30px;
+}
+.create-post-box {
+	width:600px;
+	height:600px;
 }

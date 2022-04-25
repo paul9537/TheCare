@@ -69,4 +69,61 @@
 		WHERE
 			`nickname` = #{nickname}
 	</select>
+	
+	<insert id="insertProfile" parameterType="map">
+		INSERT INTO `profile`(
+			`userId`
+			, `careType`
+			, `nickname`
+			, `imagePath`
+			, `age`
+			, `wage`
+			, `information`
+			, `address`
+			, `possibleDays`
+			, `possibleActivity`
+			, `createdAt`
+			, `updatedAt`
+		) VALUE (
+			#{userId}
+			, #{careType}
+			, #{nickname}
+			, #{imagePath}
+			, #{age}
+			, #{wage}
+			, #{information}
+			, #{address}
+			, #{possibleDays}
+			, #{possibleActivity}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<select id="selectProfile" parameterType="int" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			`profile`
+		WHERE
+			`userId` = ${userId}
+	</select>
+	
+	<update id="updateProfile" parameterType="map">
+		UPDATE
+			`profile`
+		SET
+			`careType` = #{careType}
+			, `nickname` = #{nickname}
+			, `imagePath` = #{imagePath}
+			, `age` = #{age} 
+			, `wage` = #{wage}
+			, `information` = #{information}
+			, `address` = #{address}
+			, `possibleDays` = #{possibleDays}
+			, `possibleActivity` = #{possibleActivity}
+			, `updatedAt` = now()
+		WHERE
+			`userId` = #{userId}
+	</update>
 </mapper>

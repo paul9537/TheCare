@@ -16,13 +16,22 @@
 						<li class="nav-item">
 						  <a class="nav-link" href="#">일자리 찾기</a>
 						</li>
-						<li class="nav-item">
-							<a href="/user/signin_view" class="nav-link">로그인</a>
-						</li>
+						<c:choose>
+							<c:when test="${empty userId }" >
+								<li class="nav-item">
+									<a href="/user/signin_view" class="nav-link">로그인</a>
+								</li>
+							</c:when>
+							<c:when test="${not empty userId }" >
+								<li class="nav-item">
+									<a href="/post/profile_view" class="nav-link">프로필</a>
+								</li>
+								<li>
+									<a href="/user/signout" class="nav-link" >로그아웃</a>
+								</li>
+							</c:when>
+						</c:choose>
 				    </ul>
 				</div>
 			</nav>
-		   	<div class="float-right">
-				<a href="/user/signin_view" class="nav-link">로그인</a>
-		   	</div>
 		</header>

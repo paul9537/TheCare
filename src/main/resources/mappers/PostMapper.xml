@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paul9537.care.post.dao.PostDAO">
+	
+	<select id="selectProfileByUserId" resultType="com.paul9537.care.user.model.Profile">
+		SELECT
+			`userId`
+			, `careType`
+			, `nickname`
+			, `imagePath`
+			, `age`
+			, `wage`
+			, `information`
+			, `address`
+			, `possibleDays`
+			, `possibleActivity`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`profile`
+		WHERE
+			`userId` = #{userId}
+	</select>
+	
+	<insert id="insertPost" parameterType="map">
+		INSERT INTO `post` 
+		(
+			`userId`
+			, `postType`
+			, `content`
+		) VALUE (
+			#{userId}
+			, #{postType}
+			, #{content}
+		)
+	</insert>
+</mapper>

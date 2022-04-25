@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>The Care Babysitter Page</title>
+<title>The Care Create Post Page</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -14,52 +14,38 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
-  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
-
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		<section class="d-flex justify-content-center">
-			<div class="postList-box bg-light">
-				<div class="d-flex justify-content-center">
-					<input type="text" class="form-control col-8" placeholder="지역 검색">
-					<button type="button" class="btn btn-info">검색</button>
-				</div>
-				<div class="mt-3 post-box bg-white border rounded">
-					<div class="">
-						<div>최성윤</div>
-						<hr>
-						
-						<div class="d-flex ml-3 p-2">
-							<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" width="150px">
+		<section class="d-flex justify-content-center align-items-center">
+			<div class="create-post-box border rounded mt-5">
+						<div class="w-100 p-5">
+							<h2 class="text-center">게시물 작성</h2>
+							<br>
 							
-							<div class="ml-3">
-								<h5>최성윤</h5>
-								<div class="small text-secondary">서울시특별시 강남구</div>
-								<div class="small text-secondary">28세</div>
-								<div class="small text-secondary">희망시급 15000원</div>
-								<div class="small text-secondary">점수 4.7 후기 10개</div>
+							<!-- 등록 종류 -->
+							<h5 class="d-flex justify-content-center">올리실 게시판</h5>
+							<div class="ml-5 mt-3">
+								<label>베이비시터 등록<input type="radio" id="babysitterPost" class="ml-1" name="postType" value="babysitter" checked ></label>
+								<label class="ml-3">펫시터 등록<input type="radio" id="petsitterPost" class="ml-1" name="postType" value="petsitter" ></label>
+								<label class="ml-3">아이돌봄 등록<input type="radio" id="childCarePost" class="ml-1" name="postType" value="childCare" ></label>
+							</div>
+							
+							<!-- 소개글 -->
+							<textarea class="form-control mt-3" rows="10" placeholder="소개글을 작성해주세요"></textarea>
+							
+							<!-- 게시물 올리기 버튼 -->
+							<div>
+								<button id="createPostBtn" class="btn btn-info btn-block mt-5">게시물 올리기</button>
 							</div>
 						</div>
-						<hr>
-						<div class="small ml-3 text-secondary">
-							아이 둘을 밝고 건강하게 키운 엄마이고 유아.초.중.고.대학생 교육 경력 있습니다.
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			<div class="postIconDiv">
-				<a href="#"><i id="postIcon" class="bi bi-pencil-square"></i></a>
 			</div>
 		</section>
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
-
-	
 
 </body>
 </html>

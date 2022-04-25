@@ -25,4 +25,31 @@ public interface UserDAO {
 	public User selectUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password);
+	
+	public int insertProfile(
+			@Param("userId") int userId,
+			@Param("careType") String careType,
+			@Param("nickname") String nickname,
+			@Param("imagePath") String imagePath,
+			@Param("age") int age,
+			@Param("wage") int wage,
+			@Param("information") String information,
+			@Param("address") String address,
+			@Param("possibleDays") String possibleDays,
+			@Param("possibleActivity") String possibleActivity);
+	
+	public int selectProfile(@Param("userId") int userId);
+	
+	public int updateProfile(
+			@Param("userId") int userId,
+			@Param("careType") String careType,
+			@Param("nickname") String nickname,
+			@Param("imagePath") String imagePath,
+			@Param("age") int age,
+			@Param("wage") int wage,
+			@Param("information") String information,
+			@Param("address") String address,
+			@Param("possibleDays") String possibleDays,
+			@Param("possibleActivity") String possibleActivity);
+	
 }

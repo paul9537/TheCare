@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.paul9537.care.user.bo.UserBO;
 import com.paul9537.care.user.model.User;
@@ -91,6 +92,40 @@ public class UserRestController {
 			session.setAttribute("userType", user.getUserType());
 			session.setAttribute("loginId", user.getLoginId());
 			session.setAttribute("name", user.getName());
+			session.setAttribute("nickname", user.getNickname());
+			session.setAttribute("email", user.getEmail());
+		} else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
+	
+	
+	@PostMapping("/profile_edit")
+	public Map<String, String> profileEdit(
+			@RequestParam("careType") String careType,
+			@RequestParam("file") MultipartFile file,
+			@RequestParam("age") int age,
+			@RequestParam("wage") int wage,
+			@RequestParam("information") String information,
+			@RequestParam("address") String address,
+			@RequestParam("possibleDays") String possibleDays,
+			@RequestParam("possibleActivity") String PossibleActivity,
+			HttpServletRequest request) {
+		
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		String nickname = (String)session.getAttribute("nickname");
+		
+		int count = userBO.addProfile(userId, careType, nickname, file, age, wage, information, address, possibleDays, PossibleActivity);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
 		} else {
 			result.put("result", "fail");
 		}
