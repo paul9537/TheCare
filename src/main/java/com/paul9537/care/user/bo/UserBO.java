@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.paul9537.care.common.FileManagerService;
 import com.paul9537.care.common.EncryptUtils;
 import com.paul9537.care.user.dao.UserDAO;
+import com.paul9537.care.user.model.Profile;
 import com.paul9537.care.user.model.User;
 
 @Service
@@ -60,10 +61,12 @@ public class UserBO {
 		} else {
 			return userDAO.updateProfile(userId, careType, nickname, filePath, age, wage, information, address, possibleDays, possibleActivity);
 		}
-		
-		
-		
 
+	}
+	
+	public Profile getProfile(int userId) {
+		
+		return userDAO.selectProfileByUserId(userId);
 	}
 	
 	

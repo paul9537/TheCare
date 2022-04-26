@@ -27,9 +27,11 @@
 					<input type="text" class="form-control col-8" placeholder="지역 검색">
 					<button type="button" class="btn btn-info">검색</button>
 				</div>
+				
+
 				<div class="mt-3 post-box bg-white border rounded">
-					<div class="">
-						<div>최성윤</div>
+					<div>
+						<div class="ml-3 mt-2">최성윤</div>
 						<hr>
 						
 						<div class="d-flex ml-3 p-2">
@@ -48,11 +50,13 @@
 							아이 둘을 밝고 건강하게 키운 엄마이고 유아.초.중.고.대학생 교육 경력 있습니다.
 						</div>
 					</div>
-					
 				</div>
+
+				
 			</div>
+			
 			<div class="postIconDiv">
-				<a href="#"><i id="postIcon" class="bi bi-pencil-square"></i></a>
+				<a href="/post/create_post_view"><i id="postIcon" class="bi bi-pencil-square"></i></a>
 			</div>
 		</section>
 

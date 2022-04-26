@@ -126,4 +126,25 @@
 		WHERE
 			`userId` = #{userId}
 	</update>
+	
+	<select id="selectProfileByUserId" parameterType="int" resultType="com.paul9537.care.user.model.Profile">
+		SELECT
+			`id`
+			, `userId`
+			, `careType`
+			, `nickname`
+			, `imagePath`
+			, `age`
+			, `wage`
+			, `information`
+			, `address`
+			, `possibleDays`
+			, `possibleActivity`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`profile`
+		WHERE
+			`userId` = #{userId}
+	</select>
 </mapper>

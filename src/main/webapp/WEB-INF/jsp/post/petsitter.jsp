@@ -27,8 +27,8 @@
 					<button type="button" class="btn btn-info">검색</button>
 				</div>
 				<div class="mt-3 post-box bg-white border rounded">
-					<div class="">
-						<div>최성윤</div>
+					<div>
+						<div class="ml-3 mt-2">최성윤</div>
 						<hr>
 						
 						<div class="d-flex ml-3 p-2">
@@ -49,6 +49,10 @@
 					</div>
 				
 				</div>
+			</div>
+			
+			<div class="postIconDiv">
+				<a href="/post/create_post_view"><i id="postIcon" class="bi bi-pencil-square"></i></a>
 			</div>
 		</section>
 

@@ -1,5 +1,7 @@
 package com.paul9537.care.post;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.paul9537.care.post.bo.PostBO;
+import com.paul9537.care.post.model.Post;
 import com.paul9537.care.user.model.Profile;
 
 @Controller
@@ -25,7 +28,8 @@ public class PostController {
 	}
 
 	@GetMapping("/babysitter_view")
-	public String babysitterView() {
+	public String babysitterView(Model model, HttpServletRequest request) {
+		
 		return "post/babysitter";
 	}
 	

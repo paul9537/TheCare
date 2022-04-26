@@ -31,11 +31,28 @@
 		(
 			`userId`
 			, `postType`
+			, `imagePath`
+			, `name`
+			, `nickname`
+			, `address`
+			, `age`
+			, `wage`
 			, `content`
+			, `createdAt`
+			, `updatedAt`
 		) VALUE (
 			#{userId}
 			, #{postType}
+			, #{imagePath}
+			, #{name}
+			, #{nickname}
+			, #{address}
+			, #{age}
+			, #{wage}
 			, #{content}
+			, now()
+			, now()
 		)
 	</insert>
+	
 </mapper>

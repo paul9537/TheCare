@@ -34,7 +34,7 @@
 							</div>
 							
 							<!-- 소개글 -->
-							<textarea class="form-control mt-3" rows="10" placeholder="소개글을 작성해주세요"></textarea>
+							<textarea id="contentInput" class="form-control mt-3" rows="10" placeholder="소개글을 작성해주세요"></textarea>
 							
 							<!-- 게시물 올리기 버튼 -->
 							<div>
@@ -46,6 +46,40 @@
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("#createPostBtn").on("click", function() {
+				let postType = $('input[name="postType"]:checked').val();
+				let content = $("#contentInput").val();
+				
+				if(content == "") {
+					alert("게시할 내용을 입력해주세요");
+					return ;
+				}
+				
+				$.ajax({
+					url:"/post/create_post",
+					type:"post",
+					data:{"postType":postType, "content":content},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("게시물 등록 성공");
+							location.href="/post/babysitter_view";
+						} else {
+							alert("게시물 등록 실패");
+						}
+					},
+					error:function() {
+						alert("게시물 등록 에러");
+					}
+				});
+				
+			});
+
+		});
+	</script>
 
 </body>
 </html>

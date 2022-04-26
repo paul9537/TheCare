@@ -3,6 +3,7 @@ package com.paul9537.care.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.paul9537.care.user.model.Profile;
 import com.paul9537.care.user.model.User;
 
 @Repository
@@ -52,4 +53,6 @@ public interface UserDAO {
 			@Param("possibleDays") String possibleDays,
 			@Param("possibleActivity") String possibleActivity);
 	
+	public Profile selectProfileByUserId(
+			@Param("userId") int userId);
 }
