@@ -24,5 +24,8 @@ public interface PostDAO {
 			@Param("wage") int wage,
 			@Param("content") String content);
 	
+	public List<Post> selectBabysitterPostList();
+	
+	public List<Post> selectPetsitterPostList();
 	
 }

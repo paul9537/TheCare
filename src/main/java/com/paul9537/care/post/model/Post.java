@@ -2,26 +2,20 @@ package com.paul9537.care.post.model;
 
 import java.util.Date;
 
-import com.paul9537.care.user.model.User;
+
 
 public class Post {
 	private int id;
 	private int userId;
+	private String postType;
+	private String imagePath;
+	private String name;
+	private String nickname;
+	private String address;
+	private String age;
+	private String wage;
 	private String content;
-	private User user;
 	private Date createdAt;
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
 	private Date updatedAt;
 	public int getId() {
 		return id;
@@ -35,17 +29,65 @@ public class Post {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	public String getPostType() {
+		return postType;
+	}
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+	public String getWage() {
+		return wage;
+	}
+	public void setWage(String wage) {
+		this.wage = wage;
+	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public User getUser() {
-		return user;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.paul9537.care.post;
 
+
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,13 +30,22 @@ public class PostController {
 	}
 
 	@GetMapping("/babysitter_view")
-	public String babysitterView(Model model, HttpServletRequest request) {
+	public String babysitterView(Model model) {
+		
+		List<Post> postList = postBO.getBabysitterPostList();
+		
+		model.addAttribute("postList", postList);
 		
 		return "post/babysitter";
 	}
 	
 	@GetMapping("/petsitter_view")
-	public String petsitterView() {
+	public String petsitterView(Model model) {
+		
+		List<Post> postList = postBO.getPetsitterPostList();
+		
+		model.addAttribute("postList", postList);
+		
 		return "post/petsitter";
 	}
 	

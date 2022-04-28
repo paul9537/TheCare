@@ -23,38 +23,58 @@
 		
 		<section class="d-flex justify-content-center">
 			<div class="postList-box bg-light">
+				
+				<!-- 검색창 -->
 				<div class="d-flex justify-content-center">
 					<input type="text" class="form-control col-8" placeholder="지역 검색">
 					<button type="button" class="btn btn-info">검색</button>
 				</div>
 				
-
+				<!-- 게시물 -->
+				<c:forEach var="postList" items="${postList }" >
 				<div class="mt-3 post-box bg-white border rounded">
 					<div>
-						<div class="ml-3 mt-2">최성윤</div>
+						<div class="d-flex justify-content-between">
+							<div class="ml-3 mt-2">${postList.nickname }</div>
+							
+							<div class="d-flex">
+								<!-- 즐겨찾기 추가 버튼 -->
+								<div class="mr-1">
+									<a class="text-dark favoritesBtn" href="#" >
+										<i class="bi bi-star"></i>
+									</a>
+								</div>
+								<!-- 게시물 삭제 3 Dots -->
+								<div class="more-icon" >
+									<a class="text-dark moreBtn" href="#" data-post-id="${postList.id }" data-toggle="modal" data-target="#moreModal"> 
+										<i class="bi bi-three-dots-vertical"></i> 
+									</a>
+								</div>
+							</div>
+						</div>
 						<hr>
 						
 						<div class="d-flex ml-3 p-2">
-							<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" width="150px">
+							<img src="${postList.imagePath }" width="150px">
 							
 							<div class="ml-3">
-								<h5>최성윤</h5>
-								<div class="small text-secondary">서울시특별시 강남구</div>
-								<div class="small text-secondary">28세</div>
-								<div class="small text-secondary">희망시급 15000원</div>
+								<h5>${postList.name }</h5>
+								<div class="small text-secondary">${postList.address }</div>
+								<div class="small text-secondary">${postList.age }세</div>
+								<div class="small text-secondary">희망시급 ${postList.wage }원</div>
 								<div class="small text-secondary">점수 4.7 후기 10개</div>
 							</div>
 						</div>
 						<hr>
 						<div class="small ml-3 text-secondary">
-							아이 둘을 밝고 건강하게 키운 엄마이고 유아.초.중.고.대학생 교육 경력 있습니다.
+							${postList.content }
 						</div>
 					</div>
 				</div>
-
-				
+				</c:forEach>
 			</div>
 			
+			<!-- 게시물 작성 버튼 -->
 			<div class="postIconDiv">
 				<a href="/post/create_post_view"><i id="postIcon" class="bi bi-pencil-square"></i></a>
 			</div>
@@ -63,7 +83,21 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="moreModal">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	     
+	      <div class="modal-body text-center">
+	       	<a href="#" id="deleteBtn">삭제하기 </a>
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>	
 	
-
+	<script>
+		
+	</script>
 </body>
 </html>

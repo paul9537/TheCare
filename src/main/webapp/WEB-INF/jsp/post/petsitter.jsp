@@ -14,6 +14,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -21,14 +22,25 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
 		<section class="d-flex justify-content-center">
-			<div class="postList-box bg-warning">
+			<div class="postList-box bg-light">
 				<div class="d-flex justify-content-center">
 					<input type="text" class="form-control col-8" placeholder="지역 검색">
 					<button type="button" class="btn btn-info">검색</button>
 				</div>
+				
+				<c:forEach var="postList" items="${postList }" >
 				<div class="mt-3 post-box bg-white border rounded">
 					<div>
-						<div class="ml-3 mt-2">최성윤</div>
+						<div class="d-flex justify-content-between">
+							<div class="ml-3 mt-2">${postList.nickname }</div>
+							
+							<!-- 게시물 삭제 3 Dots -->
+							<div class="more-icon" >
+								<a class="text-dark moreBtn" href="#" data-post-id="${postList.id }" data-toggle="modal" data-target="#moreModal"> 
+									<i class="bi bi-three-dots-vertical"></i> 
+								</a>
+							</div>
+						</div>
 						<hr>
 						
 						<div class="d-flex ml-3 p-2">
@@ -36,19 +48,19 @@
 							
 							<div class="ml-3">
 								<h5>최성윤</h5>
-								<div class="small text-secondary">서울시특별시 서초구</div>
-								<div class="small text-secondary">28세</div>
-								<div class="small text-secondary">희망시급 12000원</div>
+								<div class="small text-secondary">${postList.address }</div>
+								<div class="small text-secondary">${postList.age }세</div>
+								<div class="small text-secondary">희망시급 ${postList.wage }원</div>
 								<div class="small text-secondary">점수 4.9 후기 22개</div>
 							</div>
 						</div>
 						<hr>
 						<div class="small ml-3 text-secondary">
-							강아지 키운지 10년된 베테랑시터입니다. 배변훈련과 기본적인 교육 가능합니다.
+							${postList.content }
 						</div>
-					</div>
-				
+					</div>	
 				</div>
+				</c:forEach>
 			</div>
 			
 			<div class="postIconDiv">
@@ -59,5 +71,18 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="moreModal">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	     
+	      <div class="modal-body text-center">
+	       	<a href="#" id="deleteBtn">삭제하기 </a>
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>	
+	
 </body>
 </html>

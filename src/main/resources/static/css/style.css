@@ -10,9 +10,6 @@ header {
 .logo {
 	font-size:30px;
 }
-section {
-	height:900px;
-}
 .login-box {
 	width:450px;
 	height:600px;
@@ -54,4 +51,10 @@ textarea {
 .create-post-box {
 	width:600px;
 	height:600px;
+}
+.moreBtn {
+	font-size:20px;
+}
+.favoritesBtn {
+	font-size:19px;
 }

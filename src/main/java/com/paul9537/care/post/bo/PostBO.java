@@ -1,5 +1,7 @@
 package com.paul9537.care.post.bo;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,16 @@ public class PostBO {
 		String imagePath = profile.getImagePath();
 		
 		return postDAO.insertPost(userId, postType, imagePath, name, nickname, address, age, wage, content);
+	}
+	
+	public List<Post> getBabysitterPostList() {
+		
+		return postDAO.selectBabysitterPostList();
+	}
+	
+	public List<Post> getPetsitterPostList() {
+		
+		return postDAO.selectPetsitterPostList();
 	}
 	
 	
