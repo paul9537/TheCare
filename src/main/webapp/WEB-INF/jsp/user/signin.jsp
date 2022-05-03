@@ -19,10 +19,10 @@
 	
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section class="d-flex justify-content-center align-items-center">
 			<div>
-				<div class="login-box d-flex justify-content-center align-items-start bg-white border rounded">		
+				<div class="login-box d-flex justify-content-center align-items-start bg-white border rounded mt-5">		
 					<div class="w-100 p-5">			
 						<h2 class="text-center">로그인</h2>
 						<br>

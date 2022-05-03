@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.paul9537.care.common.FileManagerService;
 import com.paul9537.care.post.dao.PostDAO;
 import com.paul9537.care.post.model.Post;
 import com.paul9537.care.user.bo.UserBO;
@@ -47,5 +48,17 @@ public class PostBO {
 		return postDAO.selectPetsitterPostList();
 	}
 	
+	public int removePost(int postId, int userId) {
+		// postId로 Post 객체 얻어오기
+		Post post = postDAO.selectPostByPostId(postId);
+		if(post.getId() == userId) {
+			// 파일 삭제
+			FileManagerService.removeFile(post.getImagePath());
+
+			return postDAO.deletePost(postId);
+		}
+		
+		return 0;
+	}
 	
 }

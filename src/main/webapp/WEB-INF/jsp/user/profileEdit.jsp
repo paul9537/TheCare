@@ -21,7 +21,7 @@
 	
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section>
 			<div class="d-flex justify-content-center">
 					<div class="signup-box border rounded mt-5">
@@ -156,7 +156,6 @@
 				possibleActivity.push(possibleBabyActivity);
 				possibleActivity.push(possiblePetActivity);
 				
-				alert(possibleActivity);
 				
 				if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");

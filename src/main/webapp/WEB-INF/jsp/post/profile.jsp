@@ -20,7 +20,7 @@
 
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section>
 			<div>
 				<!-- 후기 버튼 -->
@@ -52,43 +52,43 @@
 								<h4>방문 가능 일정</h4>
 									<h5>
 									<c:if test="${fn:contains(profile.possibleDays, 'monday') }" >
-										<span class="text-danger">월</span>
+										<span class="text-primary">월</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'monday') }" >
 										월
 									</c:if>
 									<c:if test="${fn:contains(profile.possibleDays, 'tuesday') }" >
-										<span class="text-danger">화</span>
+										<span class="text-primary">화</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'tuesday') }" >
 										화
 									</c:if>
 									<c:if test="${fn:contains(profile.possibleDays, 'wednesday') }" >
-										<span class="text-danger">수</span>
+										<span class="text-primary">수</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'wednesday') }" >
 										수
 									</c:if>
 									<c:if test="${fn:contains(profile.possibleDays, 'thursday') }" >
-										<span class="text-danger">목</span>
+										<span class="text-primary">목</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'thursday') }" >
 										목
 									</c:if>
 									<c:if test="${fn:contains(profile.possibleDays, 'friday') }" >
-										<span class="text-danger">금</span>
+										<span class="text-primary">금</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'friday') }" >
 										금
 									</c:if>
 									<c:if test="${fn:contains(profile.possibleDays, 'saturday') }" >
-										<span class="text-danger">토</span>
+										<span class="text-primary">토</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'saturday') }" >
 										토
 									</c:if>
 									<c:if test="${fn:contains(profile.possibleDays, 'sunday') }" >
-										<span class="text-danger">일</span>
+										<span class="text-primary">일</span>
 									</c:if>
 									<c:if test="${not fn:contains(profile.possibleDays, 'sunday') }" >
 										일

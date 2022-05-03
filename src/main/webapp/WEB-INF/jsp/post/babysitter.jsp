@@ -21,6 +21,7 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section class="d-flex justify-content-center">
 			<div class="postList-box bg-light">
 				
@@ -97,7 +98,29 @@
 	</div>	
 	
 	<script>
-		
+		$(document).ready(function() {
+			
+			$("#deleteBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete_post",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("게시물 삭제 성공");
+						} else {
+							alert("게시물 삭제 실패");
+						}
+					},
+					error:function() {
+						alert("게시물 삭제 에러");
+					}
+				});
+			});
+			
+		});
 	</script>
 </body>
 </html>

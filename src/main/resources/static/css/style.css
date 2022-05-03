@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
 #wrap {
-	width:1200px;
 	margin:auto;
 }
-header {
-	height:80px;
+#top-nav {
+	height:60px;
 }
 .logo {
 	font-size:30px;
@@ -34,7 +33,8 @@ header {
 	height:200px;
 }
 footer {
-	height:80px;
+	margin-left:250px;
+	height:60px;
 }
 textarea {
 	resize:none;
@@ -57,4 +57,57 @@ textarea {
 }
 .favoritesBtn {
 	font-size:19px;
+}
+section {
+	margin-left:250px;
+}
+.userIcon {
+	font-size:20px;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: arial;
+}
+
+body {
+    background: #eee;
+    padding-top:60px;
+}
+
+.wrapper {
+	position:relative;
+	z-index:2;
+}
+
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background:#212529;
+    padding: 10px 0;
+}
+
+.wrapper .sidebar ul li {
+    padding: 15px;
+}
+
+.wrapper .sidebar ul li a {
+    color:#f8f9fa;
+    display: block;
+}
+
+.wrapper .sidebar ul li:hover {
+    background:#343a40;
+}
+
+.wrapper .sidebar ul li a:hover {
+    color: #fff;
+    text-decoration: none;
 }

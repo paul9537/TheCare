@@ -28,4 +28,8 @@ public interface PostDAO {
 	
 	public List<Post> selectPetsitterPostList();
 	
+	public int deletePost(
+			@Param("postId") int postId);
+	
+	public Post selectPostByPostId(@Param("postId") int postId);
 }

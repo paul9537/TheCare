@@ -19,6 +19,8 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
+		
 		<section class="d-flex justify-content-center align-items-center">
 			<div class="create-post-box border rounded mt-5">
 						<div class="w-100 p-5">

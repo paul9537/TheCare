@@ -19,7 +19,7 @@
 	
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section class="d-flex justify-content-center align-items-center">
 			<div>
 					<div class="signup-box bg-white border rounded">

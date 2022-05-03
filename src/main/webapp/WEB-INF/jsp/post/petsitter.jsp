@@ -20,7 +20,7 @@
 
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		
+		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section class="d-flex justify-content-center">
 			<div class="postList-box bg-light">
 				<div class="d-flex justify-content-center">
@@ -34,11 +34,19 @@
 						<div class="d-flex justify-content-between">
 							<div class="ml-3 mt-2">${postList.nickname }</div>
 							
-							<!-- 게시물 삭제 3 Dots -->
-							<div class="more-icon" >
-								<a class="text-dark moreBtn" href="#" data-post-id="${postList.id }" data-toggle="modal" data-target="#moreModal"> 
-									<i class="bi bi-three-dots-vertical"></i> 
-								</a>
+							<div class="d-flex">
+								<!-- 즐겨찾기 추가 버튼 -->
+								<div class="mr-1">
+									<a class="text-dark favoritesBtn" href="#" >
+										<i class="bi bi-star"></i>
+									</a>
+								</div>
+								<!-- 게시물 삭제 3 Dots -->
+								<div class="more-icon" >
+									<a class="text-dark moreBtn" href="#" data-post-id="${postList.id }" data-toggle="modal" data-target="#moreModal"> 
+										<i class="bi bi-three-dots-vertical"></i> 
+									</a>
+								</div>
 							</div>
 						</div>
 						<hr>
