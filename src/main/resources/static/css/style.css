@@ -58,6 +58,9 @@ textarea {
 .favoritesBtn {
 	font-size:19px;
 }
+.deleteFavoritesBtn {
+	font-size:19px;
+}
 section {
 	margin-left:250px;
 }

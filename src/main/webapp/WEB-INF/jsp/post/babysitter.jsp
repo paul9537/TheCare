@@ -41,8 +41,11 @@
 							<div class="d-flex">
 								<!-- 즐겨찾기 추가 버튼 -->
 								<div class="mr-1">
-									<a class="text-dark favoritesBtn" href="#" >
+									<a class="favoritesBtn text-dark" href="#" data-post-id="${postList.id }" >
 										<i class="bi bi-star"></i>
+									</a>
+									<a class="deleteFavoritesBtn text-dark" href="#" data-post-id="${postList.id }">
+										<i class="bi bi-star-fill"></i>
 									</a>
 								</div>
 								<!-- 게시물 삭제 3 Dots -->
@@ -100,22 +103,71 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#deleteBtn").on("click", function() {
+			$(".moreBtn").on("click", function() {
 				let postId = $(this).data("post-id");
+
+				$("#deleteBtn").data("post-id", postId);
+				// <a href="" data-post-id="3">
+			});
+			
+			$("#deleteBtn").on("click", function(e) {
+				e.preventDefault();
 				
+				let postId = $(this).data("post-id");
+
 				$.ajax({
 					type:"get",
 					url:"/post/delete_post",
 					data:{"postId":postId},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("게시물 삭제 성공");
+							location.reload();
 						} else {
-							alert("게시물 삭제 실패");
+							alert("본인 게시물만 삭제할 수 있습니다");
 						}
 					},
 					error:function() {
 						alert("게시물 삭제 에러");
+					}
+				});
+			});
+			
+			$(".favoritesBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/favorites",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("즐겨찾기 추가 성공");
+						} else {
+							alert("즐겨찾기 추가 실패");
+						}
+					},
+					error:function() {
+						alert("즐겨찾기 추가 에러");
+					}
+				});
+			});
+			
+			$(".deleteFavoritesBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete_favorites",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("즐겨찾기 삭제 성공");
+						} else {
+							alert("즐겨찾기 삭제 실패");
+						}
+					},
+					error:function() {
+						alert("즐겨찾기 삭제 에러");
 					}
 				});
 			});

@@ -21,7 +21,7 @@
 			                        <a class="dropdown-item" href="/post/profile_view">Profile</a>
 			                        
 			                        <div class="dropdown-divider"></div>
-		                       		<a class="dropdown-item" href="/user/signout">Logout</a>
+		                       		<a class="dropdown-item" href="/user/signout">Sign Out</a>
 			         				
 			                    </div>
 			                </li>

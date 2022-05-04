@@ -101,7 +101,7 @@
 		DELETE FROM
 			`post`
 		WHERE
-			`postId` = #{postId}
+			`id` = #{postId}
 	</delete>
 	
 	<select id="selectPostByPostId" parameterType="int" resultType="com.paul9537.care.post.model.Post">

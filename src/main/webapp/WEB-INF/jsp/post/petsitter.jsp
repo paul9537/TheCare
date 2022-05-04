@@ -52,7 +52,7 @@
 						<hr>
 						
 						<div class="d-flex ml-3 p-2">
-							<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" width="150px">
+							<img src="${postList.imagePath }" width="150px">
 							
 							<div class="ml-3">
 								<h5>최성윤</h5>
@@ -92,5 +92,38 @@
 	  </div>
 	</div>	
 	
+	<script>
+		$(document).ready(function() {
+			$(".moreBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$("#deleteBtn").data("post-id", postId);
+			});
+			
+			$("#deleteBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete_post",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("본인 게시물만 삭제할 수 있습니다");
+						}
+					},
+					error:function() {
+						alert("게시물 삭제 에러");
+					}
+				});
+			});
+			
+		});
+	
+	</script>
 </body>
 </html>

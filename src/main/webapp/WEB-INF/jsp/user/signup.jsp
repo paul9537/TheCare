@@ -22,7 +22,7 @@
 		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section class="d-flex justify-content-center align-items-center">
 			<div>
-					<div class="signup-box bg-white border rounded">
+					<div class="signup-box bg-white border rounded mt-5">
 						<div class="w-100 p-5">
 							<h2 class="text-center">회원가입</h2>
 							<br>

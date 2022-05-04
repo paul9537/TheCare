@@ -51,7 +51,7 @@ public class PostBO {
 	public int removePost(int postId, int userId) {
 		// postId로 Post 객체 얻어오기
 		Post post = postDAO.selectPostByPostId(postId);
-		if(post.getId() == userId) {
+		if(post.getUserId() == userId) {
 			// 파일 삭제
 			FileManagerService.removeFile(post.getImagePath());
 
