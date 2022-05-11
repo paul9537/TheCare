@@ -18,14 +18,14 @@
 		)
 	</insert>
 
-	<select id="selectFavoritesByUserId" parameterType="map">
+	<select id="selectFavoritesByUserId" parameterType="map" resultType="int">
 		SELECT
 			count(*)
 		FROM
 			`favorites`
 		WHERE
 			`postId` = #{postId}
-			, `userId` = #{userId}
+			AND `userId` = #{userId}
 	</select>
 	
 	<delete id="deleteFavoirtesByUserId" parameterType="map">

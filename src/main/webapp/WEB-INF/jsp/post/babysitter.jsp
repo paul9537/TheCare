@@ -32,25 +32,31 @@
 				</div>
 				
 				<!-- 게시물 -->
-				<c:forEach var="postList" items="${postList }" >
+				<c:forEach var="postDetail" items="${postList }" >
 				<div class="mt-3 post-box bg-white border rounded">
 					<div>
 						<div class="d-flex justify-content-between">
-							<div class="ml-3 mt-2">${postList.nickname }</div>
+							<div class="ml-3 mt-2">${postDetail.post.nickname }</div>
 							
 							<div class="d-flex">
 								<!-- 즐겨찾기 추가 버튼 -->
 								<div class="mr-1">
-									<a class="favoritesBtn text-dark" href="#" data-post-id="${postList.id }" >
-										<i class="bi bi-star"></i>
-									</a>
-									<a class="deleteFavoritesBtn text-dark" href="#" data-post-id="${postList.id }">
+								<c:choose>
+									<c:when test="${postDetail.favorites }" >
+									<a class="deleteFavoritesBtn text-dark" href="#" data-post-id="${postDetail.post.id }">
 										<i class="bi bi-star-fill"></i>
 									</a>
+									</c:when>
+									<c:otherwise>
+									<a class="favoritesBtn text-dark" href="#" data-post-id="${postDetail.post.id }" >
+										<i class="bi bi-star"></i>
+									</a>
+									</c:otherwise>
+								</c:choose>
 								</div>
 								<!-- 게시물 삭제 3 Dots -->
 								<div class="more-icon" >
-									<a class="text-dark moreBtn" href="#" data-post-id="${postList.id }" data-toggle="modal" data-target="#moreModal"> 
+									<a class="text-dark moreBtn" href="#" data-post-id="${postDetail.post.id }" data-toggle="modal" data-target="#moreModal"> 
 										<i class="bi bi-three-dots-vertical"></i> 
 									</a>
 								</div>
@@ -59,19 +65,19 @@
 						<hr>
 						
 						<div class="d-flex ml-3 p-2">
-							<img src="${postList.imagePath }" width="150px">
+							<img src="${postDetail.post.imagePath }" width="150px">
 							
 							<div class="ml-3">
-								<h5>${postList.name }</h5>
-								<div class="small text-secondary">${postList.address }</div>
-								<div class="small text-secondary">${postList.age }세</div>
-								<div class="small text-secondary">희망시급 ${postList.wage }원</div>
+								<h5>${postDetail.post.name }</h5>
+								<div class="small text-secondary">${postDetail.post.address }</div>
+								<div class="small text-secondary">${postDetail.post.age }세</div>
+								<div class="small text-secondary">희망시급 ${postDetail.post.wage }원</div>
 								<div class="small text-secondary">점수 4.7 후기 10개</div>
 							</div>
 						</div>
 						<hr>
 						<div class="small ml-3 text-secondary">
-							${postList.content }
+							${postDetail.post.content }
 						</div>
 					</div>
 				</div>
@@ -141,7 +147,7 @@
 					data:{"postId":postId},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("즐겨찾기 추가 성공");
+							location.reload();
 						} else {
 							alert("즐겨찾기 추가 실패");
 						}
@@ -161,7 +167,7 @@
 					data:{"postId":postId},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("즐겨찾기 삭제 성공");
+							location.reload();
 						} else {
 							alert("즐겨찾기 삭제 실패");
 						}

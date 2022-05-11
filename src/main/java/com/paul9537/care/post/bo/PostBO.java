@@ -2,6 +2,7 @@ package com.paul9537.care.post.bo;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.paul9537.care.common.FileManagerService;
 import com.paul9537.care.post.dao.PostDAO;
 import com.paul9537.care.post.model.Post;
+import com.paul9537.care.post.model.PostDetail;
 import com.paul9537.care.user.bo.UserBO;
 import com.paul9537.care.user.model.Profile;
 
@@ -21,6 +23,9 @@ public class PostBO {
 	
 	@Autowired
 	private UserBO userBO;
+	
+	@Autowired
+	private FavoritesBO favoritesBO;
 	
 	public Profile getProfile(int userId) {
 		return postDAO.selectProfileByUserId(userId);
@@ -59,6 +64,28 @@ public class PostBO {
 		}
 		
 		return 0;
+	}
+	
+	public List<PostDetail> getBabysitterPostDetailList(int userId) {
+		
+		List<Post> postList = postDAO.selectBabysitterPostList();
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post : postList) {
+			
+			PostDetail postDetail = new PostDetail();
+			
+			boolean isFavorite = favoritesBO.isFavorites(post.getId(), userId);
+			
+			postDetail.setPost(post);
+			
+			postDetail.setFavorites(isFavorite);
+			
+			postDetailList.add(postDetail);
+		}
+		
+		return postDetailList;
 	}
 	
 }

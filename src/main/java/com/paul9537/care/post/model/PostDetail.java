@@ -3,6 +3,7 @@ package com.paul9537.care.post.model;
 public class PostDetail {
 	private Post post;
 	private boolean isFavorites;
+	
 	public Post getPost() {
 		return post;
 	}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.paul9537.care.post.bo.PostBO;
 import com.paul9537.care.post.model.Post;
+import com.paul9537.care.post.model.PostDetail;
 import com.paul9537.care.user.model.Profile;
 
 @Controller
@@ -30,9 +31,13 @@ public class PostController {
 	}
 
 	@GetMapping("/babysitter_view")
-	public String babysitterView(Model model) {
+	public String babysitterView(Model model, HttpServletRequest request) {
 		
-		List<Post> postList = postBO.getBabysitterPostList();
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PostDetail> postList = postBO.getBabysitterPostDetailList(userId);
 		
 		model.addAttribute("postList", postList);
 		
