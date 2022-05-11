@@ -43,11 +43,6 @@ public class PostBO {
 		return postDAO.insertPost(userId, postType, imagePath, name, nickname, address, age, wage, content);
 	}
 	
-	public List<Post> getBabysitterPostList() {
-		
-		return postDAO.selectBabysitterPostList();
-	}
-	
 	public List<Post> getPetsitterPostList() {
 		
 		return postDAO.selectPetsitterPostList();
@@ -83,6 +78,28 @@ public class PostBO {
 			postDetail.setFavorites(isFavorite);
 			
 			postDetailList.add(postDetail);
+		}
+		
+		return postDetailList;
+	}
+	
+	public List<PostDetail> getPetsitterPostDetailList(int userId) {
+		
+		List<Post> postList = postDAO.selectPetsitterPostList();
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post : postList) {
+			
+			PostDetail postDetailPetsitter = new PostDetail();
+			
+			boolean isFavorite = favoritesBO.isFavorites(post.getId(), userId);
+			
+			postDetailPetsitter.setPost(post);
+			
+			postDetailPetsitter.setFavorites(isFavorite);
+			
+			postDetailList.add(postDetailPetsitter);
 		}
 		
 		return postDetailList;

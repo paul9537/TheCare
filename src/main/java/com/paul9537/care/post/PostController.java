@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.paul9537.care.post.bo.PostBO;
-import com.paul9537.care.post.model.Post;
 import com.paul9537.care.post.model.PostDetail;
 import com.paul9537.care.user.model.Profile;
 
@@ -45,9 +44,13 @@ public class PostController {
 	}
 	
 	@GetMapping("/petsitter_view")
-	public String petsitterView(Model model) {
+	public String petsitterView(Model model, HttpServletRequest request) {
 		
-		List<Post> postList = postBO.getPetsitterPostList();
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PostDetail> postList = postBO.getPetsitterPostDetailList(userId);
 		
 		model.addAttribute("postList", postList);
 		
