@@ -28,11 +28,21 @@
 			AND `userId` = #{userId}
 	</select>
 	
-	<delete id="deleteFavoirtesByUserId" parameterType="map">
+	<delete id="deleteFavoritesByUserId" parameterType="map">
 		DELETE FROM 
 			`favorites`
 		WHERE
 			`userId` = #{userId}
 			AND `postId` = #{postId}
 	</delete>
+	
+	<select id="selectFavoritesListByUserId" parameterType="map" resultType="com.paul9537.care.post.model.Favorites">
+		SELECT
+			`id`
+			, `userId`
+			, `postId`
+			, `createdAt`
+		FROM
+			`favorites`
+	</select>
 </mapper>

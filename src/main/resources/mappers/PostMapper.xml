@@ -123,4 +123,46 @@
 		WHERE
 			`id` = #{postId}
 	</select>
+	
+	<select id="selectFindJobPostList" resultType="com.paul9537.care.post.model.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `postType`
+			, `imagePath`
+			, `name`
+			, `nickname`
+			, `address`
+			, `age`
+			, `wage`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`postType` = 'childCare'
+		ORDER BY `id` DESC
+	</select>
+	
+	<select id="selectPostListByPostId" parameterType="map" resultType="com.paul9537.care.post.model.Post">
+		SELECT
+			`id`
+			, `userId`
+			, `postType`
+			, `imagePath`
+			, `name`
+			, `nickname`
+			, `address`
+			, `age`
+			, `wage`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`postId` = #{postId}
+		ORDER BY `id` DESC
+	</select>
 </mapper>

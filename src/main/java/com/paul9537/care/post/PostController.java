@@ -78,4 +78,33 @@ public class PostController {
 	public String createPostView() {
 		return "post/createPost";
 	}
+	
+	
+	@GetMapping("/favorites_view")
+	public String favoritesView(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PostDetail> postList = postBO.getFavoritesPostDetail(userId);
+		
+		model.addAttribute("postList", postList);
+		
+		return "post/favorites";
+	}
+	
+	@GetMapping("findjob_view")
+	public String findjobView(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PostDetail> postList = postBO.getFindJobPostDetail(userId);
+		
+		model.addAttribute("postList", postList);
+		
+		return "post/findjob";
+	}
 }

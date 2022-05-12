@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.paul9537.care.common.FileManagerService;
 import com.paul9537.care.post.dao.PostDAO;
+import com.paul9537.care.post.model.Favorites;
 import com.paul9537.care.post.model.Post;
 import com.paul9537.care.post.model.PostDetail;
 import com.paul9537.care.user.bo.UserBO;
@@ -102,6 +103,59 @@ public class PostBO {
 			postDetailList.add(postDetailPetsitter);
 		}
 		
+		return postDetailList;
+	}
+	
+	public List<PostDetail> getFindJobPostDetail(int userId) {
+		
+		List<Post> postList = postDAO.selectFindJobPostList();
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post : postList) {
+			
+			PostDetail postDetailFindJob = new PostDetail();
+			
+			boolean isFavorite = favoritesBO.isFavorites(post.getId(), userId);
+			
+			postDetailFindJob.setPost(post);
+			
+			postDetailFindJob.setFavorites(isFavorite);
+			
+			postDetailList.add(postDetailFindJob);
+		}
+		
+		return postDetailList;
+	}
+	
+	
+	public List<PostDetail> getFavoritesPostDetail(int userId) {
+		
+		List<Favorites> favoritesList = favoritesBO.getFavoritesList(userId);
+		
+		List<Integer> postIdList = new ArrayList<>();
+		
+		for(int i = 0; i < favoritesList.size(); i++) {
+			postIdList.add(favoritesList.get(i).getPostId());
+		}
+		
+		List<Post> favoritesPostList = postDAO.selectPostListByPostId(postIdList);
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post : favoritesPostList) {
+			
+			PostDetail favoritesPostDetail = new PostDetail();
+			
+			boolean isFavorite = favoritesBO.isFavorites(post.getId(), userId);
+			
+			favoritesPostDetail.setPost(post);
+			
+			favoritesPostDetail.setFavorites(isFavorite);
+			
+			postDetailList.add(favoritesPostDetail);
+			
+		}
 		return postDetailList;
 	}
 	

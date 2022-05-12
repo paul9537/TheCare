@@ -1,9 +1,12 @@
 package com.paul9537.care.post.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.paul9537.care.post.dao.FavoritesDAO;
+import com.paul9537.care.post.model.Favorites;
 
 @Service
 public class FavoritesBO {
@@ -11,7 +14,7 @@ public class FavoritesBO {
 	@Autowired
 	private FavoritesDAO favoritesDAO;
 	
-	public int addFavorites( int userId, int postId) {
+	public int addFavorites(int userId, int postId) {
 		return favoritesDAO.insertFavorites(userId, postId);
 	}
 	
@@ -22,6 +25,11 @@ public class FavoritesBO {
 	}
 	
 	public int deleteFavorites(int userId, int postId) {
-		return favoritesDAO.deleteFavoirtesByUserId(userId, postId);
+		return favoritesDAO.deleteFavoritesByUserId(userId, postId);
 	}
+	
+	public List<Favorites> getFavoritesList(int userId) {
+		return favoritesDAO.selectFavoritesListByUserId(userId);
+	}
+	
 }

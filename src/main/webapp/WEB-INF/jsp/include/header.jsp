@@ -15,13 +15,11 @@
 			                <li class="nav-item dropdown">
 			                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"></a>
 			                    <div class="dropdown-menu dropdown-menu-right">
-			                    	<div class="dropdown-item">최성윤(paul9537)</div>
-			                    	
-			                    	<div class="dropdown-divider"></div>
-			                        <a class="dropdown-item" href="/post/profile_view">Profile</a>
+		
+			                        <a class="dropdown-item" href="/post/profile_view">프로필</a>
 			                        
 			                        <div class="dropdown-divider"></div>
-		                       		<a class="dropdown-item" href="/user/signout">Sign Out</a>
+		                       		<a class="dropdown-item" href="/user/signout">로그아웃</a>
 			         				
 			                    </div>
 			                </li>
@@ -31,7 +29,7 @@
 		            <c:when test="${empty userId }">
 			            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			            	<li class="nav-item">
-			            		<a class="nav-link text-white" href="/user/signin_view">Sign In</a>
+			            		<a class="nav-link text-white" href="/user/signin_view">로그인</a>
 			            	</li>
 			            </ul>
 		            </c:when>

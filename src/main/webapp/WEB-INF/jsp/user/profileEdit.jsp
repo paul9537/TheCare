@@ -24,7 +24,7 @@
 		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section>
 			<div class="d-flex justify-content-center">
-					<div class="signup-box border rounded mt-5">
+					<div class="signup-box border rounded mt-5 bg-white">
 						<div class="p-5">
 							<h2 class="text-center">프로필 수정</h2>
 							<br>
@@ -137,7 +137,8 @@
 				let information = $("#informationInput").val();
 				let address = $("#sido1").val() + " " + $("#gugun1").val();
 				let possibleDay = $('input[name="day"]:checked').val();
-
+				
+				
 				$('input[name="day"]:checked').each(function() {
 					var daysChk = $(this).val();
 					possibleDays.push(daysChk);
@@ -159,6 +160,31 @@
 				
 				if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");
+					return ;
+				}
+				
+				if(age == "") {
+					alert("나이를 입력해주세요");
+					return ;
+				}
+				
+				if(wage == "") {
+					alert("희망시급을 입력해주세요");
+					return ;
+				}
+				
+				if(information == "") {
+					alert("경력 또는 아이정보를 입력해주세요");
+					return;
+				}
+				
+				if(address == "") {
+					alert("지역을 선택해주세요");
+					return ;
+				}
+				
+				if(possibleDay == "") {
+					alert("가능한 날짜를 선택해주세요");
 					return ;
 				}
 				
