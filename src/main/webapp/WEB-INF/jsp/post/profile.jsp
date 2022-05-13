@@ -115,17 +115,35 @@
 				<div>
 					<!-- 프로필 수정 버튼 -->
 					<a href="/user/profile_edit"><button type="button" class="btn btn-info float-right">수정</button></a>
-					<!-- 소개 -->
-					<div>
-						<h4>소개</h4>
-						<div class="introduce-box">
-							<h5>${profile.information }</h5>
+					<div class="d-flex">
+						<!-- 소개 -->
+						<div>
+							<h4>소개</h4>
+							<div class="introduce-box">
+								<h5 class="font-weight-light">${profile.information }</h5>
+							</div>
 						</div>
-					</div>
-					<!-- 가능 활동 -->
-					<div>
-						<h4>맘시터</h4>
-						<div></div>
+						<!-- 가능 활동 -->
+						<div class="ml-5">
+							<div>
+								<h4>가능 활동</h4>
+								<h5 class="font-weight-light">실내놀이</h5>
+								<h5 class="font-weight-light">야외활동</h5>
+								<h5 class="font-weight-light">등하원 돕기</h5>
+								<h5 class="font-weight-light">책 읽기</h5>
+								<h5 class="font-weight-light">밥 챙겨주기</h5>
+								<h5 class="font-weight-light">간단 청소</h5>
+							</div>
+							<div>
+								<h4>가능 활동</h4>
+								<h5 class="font-weight-light">실내놀이</h5>
+								<h5 class="font-weight-light">야외활동</h5>
+								<h5 class="font-weight-light">등하원 돕기</h5>
+								<h5 class="font-weight-light">책 읽기</h5>
+								<h5 class="font-weight-light">밥 챙겨주기</h5>
+								<h5 class="font-weight-light">간단 청소</h5>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -161,8 +161,11 @@
 			, `updatedAt`
 		FROM
 			`post`
-		WHERE
-			`postId` = #{postId}
+		WHERE ID in
+	    <foreach item="item" collection="postIdList"
+     	   open="(" separator="," close=")">
+      		  #{item}
+  		</foreach>
 		ORDER BY `id` DESC
 	</select>
 </mapper>

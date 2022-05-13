@@ -85,5 +85,32 @@
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$(".deleteFavoritesBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete_favorites",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("즐겨찾기 삭제 실패");
+						}
+					},
+					error:function() {
+						alert("즐겨찾기 삭제 에러");
+					}
+				});
+			});
+			
+			
+		});
+	
+	</script>
 </body>
 </html>
