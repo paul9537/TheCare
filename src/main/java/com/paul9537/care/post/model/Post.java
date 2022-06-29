@@ -10,8 +10,9 @@ public class Post {
 	private String postType;
 	private String imagePath;
 	private String name;
-	private String nickname;
-	private String address;
+	private String primaryAddress;
+	private String secondaryAddress;
+	private String thirdAddress;
 	private String age;
 	private String wage;
 	private String content;
@@ -47,17 +48,23 @@ public class Post {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getPrimaryAddress() {
+		return primaryAddress;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setPrimaryAddress(String primaryAddress) {
+		this.primaryAddress = primaryAddress;
 	}
-	public String getAddress() {
-		return address;
+	public String getSecondaryAddress() {
+		return secondaryAddress;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setSecondaryAddress(String secondaryAddress) {
+		this.secondaryAddress = secondaryAddress;
+	}
+	public String getThirdAddress() {
+		return thirdAddress;
+	}
+	public void setThirdAddress(String thirdAddress) {
+		this.thirdAddress = thirdAddress;
 	}
 	public String getAge() {
 		return age;

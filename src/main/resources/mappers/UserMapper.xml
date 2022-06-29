@@ -8,25 +8,17 @@
 	<insert id="insertUser" parameterType="map">
 		INSERT INTO `user`
 		(
-			`userType`
-			, `careType`
-			, `loginId`
-			, `nickname`
+			`loginId`
 			, `password`
 			, `name`
 			, `email`
-			, `address`
 			, `createdAt`
 			, `updatedAt`
 		) VALUE (
-			#{userType}
-			, #{careType}
-			, #{loginId}
-			, #{nickname}
+			#{loginId}
 			, #{password}
 			, #{name}
 			, #{email}
-			, #{address}
 			, now()
 			, now()
 		)
@@ -44,14 +36,10 @@
 	<select id="selectUser" parameterType="map" resultType="com.paul9537.care.user.model.User">
 		SELECT
 			`id`
-			, `userType`
-			, `careType`
 			, `loginId`
-			, `nickname`
 			, `password`
 			, `name`
 			, `email`
-			, `address`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -61,25 +49,17 @@
 			AND `password` = #{password}
 	</select>
 	
-	<select id="selectNicknameDuplicate" parameterType="string" resultType="int">
-		SELECT
-			count(*)
-		FROM
-			`user`
-		WHERE
-			`nickname` = #{nickname}
-	</select>
-	
 	<insert id="insertProfile" parameterType="map">
 		INSERT INTO `profile`(
 			`userId`
 			, `careType`
-			, `nickname`
 			, `imagePath`
 			, `age`
 			, `wage`
 			, `information`
-			, `address`
+			, `primaryAddress`
+			, `secondaryAddress`
+			, `thirdAddress`
 			, `possibleDays`
 			, `possibleActivity`
 			, `createdAt`
@@ -87,12 +67,13 @@
 		) VALUE (
 			#{userId}
 			, #{careType}
-			, #{nickname}
 			, #{imagePath}
 			, #{age}
 			, #{wage}
 			, #{information}
-			, #{address}
+			, #{primaryAddress}
+			, #{secondaryAddress}
+			, #{thirdAddress}
 			, #{possibleDays}
 			, #{possibleActivity}
 			, now()
@@ -114,12 +95,13 @@
 			`profile`
 		SET
 			`careType` = #{careType}
-			, `nickname` = #{nickname}
 			, `imagePath` = #{imagePath}
 			, `age` = #{age} 
 			, `wage` = #{wage}
 			, `information` = #{information}
-			, `address` = #{address}
+			, `primaryAddress` = #{primaryAddress}
+			, `secondaryAddress` = #{secondaryAddress}
+			, `thirdAddress` = #{thirdAddress}
 			, `possibleDays` = #{possibleDays}
 			, `possibleActivity` = #{possibleActivity}
 			, `updatedAt` = now()
@@ -132,12 +114,13 @@
 			`id`
 			, `userId`
 			, `careType`
-			, `nickname`
 			, `imagePath`
 			, `age`
 			, `wage`
 			, `information`
-			, `address`
+			, `primaryAddress`
+			, `secondaryAddress`
+			, `thirdAddress`
 			, `possibleDays`
 			, `possibleActivity`
 			, `createdAt`

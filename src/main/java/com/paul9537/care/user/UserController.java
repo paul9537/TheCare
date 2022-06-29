@@ -27,10 +27,9 @@ public class UserController {
 		HttpSession session = request.getSession();
 		
 		session.removeAttribute("userId");
-		session.removeAttribute("userType");
 		session.removeAttribute("loginId");
 		session.removeAttribute("name");
-		session.removeAttribute("nickname");
+		session.removeAttribute("email");
 		
 		return "redirect:/post/main_view";
 	}

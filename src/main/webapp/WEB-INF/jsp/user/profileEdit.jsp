@@ -24,7 +24,7 @@
 		<c:import url="/WEB-INF/jsp/include/sidebar.jsp" />
 		<section>
 			<div class="d-flex justify-content-center">
-					<div class="signup-box border rounded mt-5 bg-white">
+					<div class="profileEdit-box border rounded mt-5 bg-white">
 						<div class="p-5">
 							<h2 class="text-center">프로필 수정</h2>
 							<br>
@@ -38,16 +38,6 @@
 								</div>
 							</div>
 							
-							<!-- 닉네임 -->
-							<div class="d-flex justify-content-center mt-3">
-								<input type="text" class="form-control" id="nicknameInput" placeholder="닉네임">
-								<button class="btn btn-info" id="checkBtn">중복확인</button>
-							</div>
-							
-							<!-- 이미지 사진 -->
-							<input id="fileInput" type="file" class="d-none" />
-							<a href="#" id="imageIcon" class="form-control btn btn-info my-2"><i class="big-icon bi bi-image text-dark"> 이미지 파일 업로드</i></a>
-							
 							<!-- 나이 -->
 							<input type="text" id="ageInput" class="form-control" placeholder="나이">
 							
@@ -57,10 +47,29 @@
 							<!-- 경력 / 아이정보 -->
 							<textarea id="informationInput" class="form-control mt-2" placeholder="경력 / 아이정보를 입력해주세요"></textarea>
 							
+							<!-- 이미지 사진 -->
+							<input id="fileInput" type="file" class="d-none" />
+							<a href="#" id="imageIcon" class="form-control btn btn-info my-2"><i class="big-icon bi bi-image text-dark"> 이미지 파일 업로드</i></a>
+							
 							<!-- 시도구군 -->
-							<div class="d-flex mt-3">
+							<div class="mt-1">활동가능 지역 1</div>
+							<div class="d-flex mt-1">
 								<select name="sido1" id="sido1" class="form-control"></select>
 								<select name="gugun1" id="gugun1" class="form-control"></select>
+							</div>
+							
+							<!-- 시도구군 -->
+							<div class="mt-1">활동가능 지역 2</div>
+							<div class="d-flex mt-1">
+								<select name="sido2" id="sido2" class="form-control"></select>
+								<select name="gugun2" id="gugun2" class="form-control"></select>
+							</div>
+							
+							<!-- 시도구군 -->
+							<div class="mt-1">활동가능 지역 3</div>
+							<div class="d-flex mt-1">
+								<select name="sido3" id="sido3" class="form-control"></select>
+								<select name="gugun3" id="gugun3" class="form-control"></select>
 							</div>
 
 							<!-- 가능 요일 선택 -->
@@ -131,11 +140,12 @@
 			
 			$("#profileEditBtn").on("click", function() {
 				let careType = $('input[name="careType"]:checked').val();
-				let nickname = $("#nicknameInput").val().trim();
 				let age = $("#ageInput").val();
 				let wage = $("#wageInput").val();
 				let information = $("#informationInput").val();
-				let address = $("#sido1").val() + " " + $("#gugun1").val();
+				let primaryAddress = $("#sido1").val() + " " + $("#gugun1").val();
+				let secondaryAddress = $("#sido2").val() + " " + $("#gugun2").val();
+				let thirdAddress = $("#sido3").val() + " " + $("#gugun3").val();
 				let possibleDay = $('input[name="day"]:checked').val();
 				
 				
@@ -178,7 +188,17 @@
 					return;
 				}
 				
-				if(address == "") {
+				if(primaryAddress == "") {
+					alert("지역을 선택해주세요");
+					return ;
+				}
+				
+				if(secondaryAddress == "") {
+					alert("지역을 선택해주세요");
+					return ;
+				}
+				
+				if(thirdAddress == "") {
 					alert("지역을 선택해주세요");
 					return ;
 				}
@@ -194,7 +214,9 @@
 				formData.append("age", age);
 				formData.append("wage", wage);
 				formData.append("information", information);
-				formData.append("address", address);
+				formData.append("primaryAddress", primaryAddress);
+				formData.append("secondaryAddress", secondaryAddress);
+				formData.append("thirdAddress", thirdAddress);
 				formData.append("possibleDays", possibleDays);
 				formData.append("possibleActivity", possibleActivity);
 				formData.append("file", $("#fileInput")[0].files[0]);
@@ -223,40 +245,6 @@
 			
 			$("#imageIcon").on("click", function() {
 				$("#fileInput").click();
-			});
-			
-			$("#checkBtn").on("click", function() {
-				let nickname = $("#nicknameInput").val();
-				
-				isChecked = true
-				
-				if(nickname == "") {
-					alert("아이디를 입력해주세요");
-					return ;
-				}
-				
-				$.ajax({
-					type:"get",
-					url:"/user/nicknameDuplicate",
-					data:{"nickname":nickname},
-					success:function(data) {
-						if(data.isDuplicate) {
-							isDuplicate = true;
-							alert("이미 사용중인 닉네임입니다");
-							return ;
-						} else{
-							isDuplicate = false;
-							alert("사용 가능한 닉네임입니다");
-							return ;
-						}
-						
-					},
-					error:function() {
-						alert("중복체크 에러");
-					}
-					
-				});
-				
 			});
 			
 			$("#childCB").on("click", function() {
@@ -315,9 +303,6 @@
 			});
 			
 		});
-	
-		
-	
 	
 	</script>
 </body>

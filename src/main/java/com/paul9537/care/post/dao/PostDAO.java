@@ -18,8 +18,9 @@ public interface PostDAO {
 			@Param("postType") String postType,
 			@Param("imagePath") String imagePath,
 			@Param("name") String name,
-			@Param("nickname") String nickname,
-			@Param("address") String address,
+			@Param("primaryAddress") String primaryAddress,
+			@Param("secondaryAddress") String secondaryAddress,
+			@Param("thirdAddress") String thirdAddress,
 			@Param("age") int age,
 			@Param("wage") int wage,
 			@Param("content") String content);

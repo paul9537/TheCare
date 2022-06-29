@@ -35,21 +35,21 @@
 				<div class="mt-3 post-box bg-white border rounded">
 					<div>
 						<div class="d-flex justify-content-between">
-							<div class="ml-3 mt-2">${postDetail.post.nickname }</div>
+							<h5 class="ml-3 mt-2">${postDetail.post.name }</h5>
 							
 							<div class="d-flex">
 								<!-- 즐겨찾기 추가 버튼 -->
 								<div class="mr-1">
 								<c:choose>
 									<c:when test="${postDetail.favorites }" >
-										<a class="deleteFavoritesBtn text-dark" href="#" data-post-id="${postDetail.post.id }">
-											<i class="bi bi-star-fill"></i>
-										</a>
+									<a class="deleteFavoritesBtn text-dark" href="#" data-post-id="${postDetail.post.id }">
+										<i class="bi bi-star-fill"></i>
+									</a>
 									</c:when>
 									<c:otherwise>
-										<a class="favoritesBtn text-dark" href="#" data-post-id="${postDetail.post.id }" >
-											<i class="bi bi-star"></i>
-										</a>
+									<a class="favoritesBtn text-dark" href="#" data-post-id="${postDetail.post.id }" >
+										<i class="bi bi-star"></i>
+									</a>
 									</c:otherwise>
 								</c:choose>
 								</div>
@@ -67,11 +67,33 @@
 							<img src="${postDetail.post.imagePath }" width="150px">
 							
 							<div class="ml-3">
-								<h5>${postDetail.post.name }</h5>
-								<div class="small text-secondary">${postDetail.post.address }</div>
-								<div class="small text-secondary">${postDetail.post.age }세</div>
-								<div class="small text-secondary">희망시급 ${postDetail.post.wage }원</div>
-								<div class="small text-secondary">점수 4.7 후기 10개</div>
+								<div class="d-flex">
+									<div>
+										<div>
+											<div>나이</div>
+											<div class="small text-secondary">${postDetail.post.age }세</div>
+										</div>
+										<div class="mt-2">
+											<div>희망 시급</div>
+											<div class="small text-secondary">희망시급 ${postDetail.post.wage }원</div>
+										</div>
+									</div>
+									
+									<div class="ml-5">
+										<div>
+											<div>활동가능 지역1</div>
+											<div class="small text-secondary">${postDetail.post.primaryAddress }</div>
+										</div>
+										<div class="mt-2">
+											<div>활동가능 지역2</div>
+											<div class="small text-secondary">${postDetail.post.secondaryAddress }</div>
+										</div>
+										<div class="mt-2">
+											<div>활동가능 지역3</div>
+											<div class="small text-secondary">${postDetail.post.thirdAddress }</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<hr>

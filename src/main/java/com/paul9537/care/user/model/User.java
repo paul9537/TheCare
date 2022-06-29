@@ -4,14 +4,10 @@ import java.util.Date;
 
 public class User {
 	private int id;
-	private String userType;
-	private String careType;
 	private String loginId;
-	private String nickname;
 	private String password;
 	private String name;
 	private String email;
-	private String address;
 	private Date createdAt;
 	private Date updatedAt;
 	public int getId() {
@@ -19,18 +15,6 @@ public class User {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getUserType() {
-		return userType;
-	}
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-	public String getCareType() {
-		return careType;
-	}
-	public void setCareType(String careType) {
-		this.careType = careType;
 	}
 	public String getLoginId() {
 		return loginId;
@@ -56,12 +40,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -74,12 +52,5 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-	
 	
 }

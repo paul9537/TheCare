@@ -35,13 +35,14 @@ public class PostBO {
 	public int createPost(int userId, String postType, String name, String content) {
 		
 		Profile profile = userBO.getProfile(userId);
-		String nickname = profile.getNickname();
-		String address = profile.getAddress();
+		String primaryAddress = profile.getPrimaryAddress();
+		String secondaryAddress = profile.getSecondaryAddress();
+		String thirdAddress = profile.getThirdAddress();
 		int age = profile.getAge();
 		int wage = profile.getWage();
 		String imagePath = profile.getImagePath();
 		
-		return postDAO.insertPost(userId, postType, imagePath, name, nickname, address, age, wage, content);
+		return postDAO.insertPost(userId, postType, imagePath, name, primaryAddress, secondaryAddress, thirdAddress, age, wage, content);
 	}
 	
 	public List<Post> getPetsitterPostList() {

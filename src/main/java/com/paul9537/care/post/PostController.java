@@ -64,12 +64,15 @@ public class PostController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		String email = (String)session.getAttribute("email");
+		String name = (String)session.getAttribute("name");
 		
 		Profile profile = postBO.getProfile(userId);
 		
 		model.addAttribute("profile", profile);
 		
 		model.addAttribute("email", email);
+		
+		model.addAttribute("name", name);
 		
 		return "post/profile";
 	}

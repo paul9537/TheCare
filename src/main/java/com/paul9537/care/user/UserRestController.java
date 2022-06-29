@@ -27,16 +27,12 @@ public class UserRestController {
 	
 	@PostMapping("/signup")
 	public Map<String, String> signup(
-			@RequestParam("userType") String userType,
-			@RequestParam("careType") String careType,
 			@RequestParam("loginId") String loginId,
-			@RequestParam("nickname") String nickname,
 			@RequestParam("password") String password,
 			@RequestParam("name") String name,
-			@RequestParam("email") String email,
-			@RequestParam("address") String address) {
+			@RequestParam("email") String email) {
 		
-		int count = userBO.signup(userType, careType, loginId, nickname, password, name, email, address);
+		int count = userBO.signup(loginId, password, name, email);
 		
 		Map<String, String> result = new HashMap<>();
 		
@@ -61,18 +57,6 @@ public class UserRestController {
 		return result;
 	}
 	
-	@GetMapping("/nicknameDuplicate")
-	public Map<String, Boolean> nicknameDuplicate(@RequestParam("nickname") String nickname) {
-		
-		boolean isDuplicate = userBO.nicknameDuplicate(nickname);
-		
-		Map<String, Boolean> result = new HashMap<>();
-		
-		result.put("isDuplicate", isDuplicate);
-		
-		return result;
-	}
-	
 	@PostMapping("/signin")
 	public Map<String, String> signin(
 			@RequestParam("loginId") String loginId,
@@ -89,10 +73,8 @@ public class UserRestController {
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("userId", user.getId());
-			session.setAttribute("userType", user.getUserType());
 			session.setAttribute("loginId", user.getLoginId());
 			session.setAttribute("name", user.getName());
-			session.setAttribute("nickname", user.getNickname());
 			session.setAttribute("email", user.getEmail());
 		} else {
 			result.put("result", "fail");
@@ -109,7 +91,9 @@ public class UserRestController {
 			@RequestParam("age") int age,
 			@RequestParam("wage") int wage,
 			@RequestParam("information") String information,
-			@RequestParam("address") String address,
+			@RequestParam("primaryAddress") String primaryAddress,
+			@RequestParam("secondaryAddress") String secondaryAddress,
+			@RequestParam("thirdAddress") String thirdAddress,
 			@RequestParam("possibleDays") String possibleDays,
 			@RequestParam("possibleActivity") String PossibleActivity,
 			HttpServletRequest request) {
@@ -118,9 +102,8 @@ public class UserRestController {
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
-		String nickname = (String)session.getAttribute("nickname");
 		
-		int count = userBO.addProfile(userId, careType, nickname, file, age, wage, information, address, possibleDays, PossibleActivity);
+		int count = userBO.addProfile(userId, careType, file, age, wage, information, primaryAddress, secondaryAddress, thirdAddress, possibleDays, PossibleActivity);
 		
 		Map<String, String> result = new HashMap<>();
 		

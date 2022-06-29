@@ -3,12 +3,13 @@ package com.paul9537.care.user.model;
 public class Profile {
 	private int userId;
 	private String type;
-	private String nickname;
 	private String imagePath;
 	private int age;
 	private int wage;
 	private String information;
-	private String address;
+	private String primaryAddress;
+	private String secondaryAddress;
+	private String thirdAddress;
 	private String possibleDays;
 	private String possibleActivity;
 	public int getUserId() {
@@ -22,12 +23,6 @@ public class Profile {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
 	}
 	public String getImagePath() {
 		return imagePath;
@@ -53,11 +48,23 @@ public class Profile {
 	public void setInformation(String information) {
 		this.information = information;
 	}
-	public String getAddress() {
-		return address;
+	public String getPrimaryAddress() {
+		return primaryAddress;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPrimaryAddress(String primaryAddress) {
+		this.primaryAddress = primaryAddress;
+	}
+	public String getSecondaryAddress() {
+		return secondaryAddress;
+	}
+	public void setSecondaryAddress(String secondaryAddress) {
+		this.secondaryAddress = secondaryAddress;
+	}
+	public String getThirdAddress() {
+		return thirdAddress;
+	}
+	public void setThirdAddress(String thirdAddress) {
+		this.thirdAddress = thirdAddress;
 	}
 	public String getPossibleDays() {
 		return possibleDays;

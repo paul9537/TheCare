@@ -35,15 +35,25 @@
 						<img src="${profile.imagePath }" width="300px">
 					</div>
 					<div class="ml-5">
-						<h2>${profile.nickname }</h2>
+						<h2>${name }</h2>
 						<h4 class="mt-1">Rating 4.7</h4>
 						<div class="mt-4">
 							<!-- 이메일 -->
 							<h5>${email }</h5>
 							<!-- 지역 -->
-							<div class="mt-4">
-								<h4>지역</h4>
-								<h4>${profile.address }</h4>
+							<div class="d-flex">
+								<div class="mt-4">
+									<h4>활동가능 지역1</h4>
+									<h4>${profile.primaryAddress }</h4>
+								</div>
+								<div class="mt-4 ml-4">
+									<h4>활동가능 지역2</h4>
+									<h4>${profile.secondaryAddress }</h4>
+								</div>
+								<div class="mt-4 ml-4">
+									<h4>활동가능 지역3</h4>
+									<h4>${profile.thirdAddress }</h4>
+								</div>
 							</div>
 						</div>
 						<div class="d-flex mt-4">
