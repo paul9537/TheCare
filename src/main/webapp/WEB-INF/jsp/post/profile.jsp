@@ -14,6 +14,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -137,21 +138,58 @@
 						<div class="ml-5">
 							<div>
 								<h4>가능 활동</h4>
-								<h5 class="font-weight-light">실내놀이</h5>
-								<h5 class="font-weight-light">야외활동</h5>
-								<h5 class="font-weight-light">등하원 돕기</h5>
-								<h5 class="font-weight-light">책 읽기</h5>
-								<h5 class="font-weight-light">밥 챙겨주기</h5>
-								<h5 class="font-weight-light">간단 청소</h5>
+								<div class="d-flex">
+									<h5 class="font-weight-light">실내놀이</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">야외활동</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">등하원 돕기</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">책 읽기</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">밥 챙겨주기</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">간단 청소</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
 							</div>
 							<div>
+							<div>
 								<h4>가능 활동</h4>
-								<h5 class="font-weight-light">실내놀이</h5>
-								<h5 class="font-weight-light">야외활동</h5>
-								<h5 class="font-weight-light">등하원 돕기</h5>
-								<h5 class="font-weight-light">책 읽기</h5>
-								<h5 class="font-weight-light">밥 챙겨주기</h5>
-								<h5 class="font-weight-light">간단 청소</h5>
+								<div class="d-flex">
+									<h5 class="font-weight-light">실내놀이</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">야외활동</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">등하원 돕기</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">책 읽기</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">밥 챙겨주기</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">간단 청소</h5>
+									<i class="bi bi-check-lg"></i>
+								</div>
 							</div>
 						</div>
 					</div>
