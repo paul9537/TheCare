@@ -62,48 +62,48 @@
 							<div>
 								<h4>방문 가능 일정</h4>
 									<h5>
-									<c:if test="${fn:contains(profile.possibleDays, 'monday') }" >
-										<span class="text-primary">월</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'monday') }" >
-										월
-									</c:if>
-									<c:if test="${fn:contains(profile.possibleDays, 'tuesday') }" >
-										<span class="text-primary">화</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'tuesday') }" >
-										화
-									</c:if>
-									<c:if test="${fn:contains(profile.possibleDays, 'wednesday') }" >
-										<span class="text-primary">수</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'wednesday') }" >
-										수
-									</c:if>
-									<c:if test="${fn:contains(profile.possibleDays, 'thursday') }" >
-										<span class="text-primary">목</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'thursday') }" >
-										목
-									</c:if>
-									<c:if test="${fn:contains(profile.possibleDays, 'friday') }" >
-										<span class="text-primary">금</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'friday') }" >
-										금
-									</c:if>
-									<c:if test="${fn:contains(profile.possibleDays, 'saturday') }" >
-										<span class="text-primary">토</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'saturday') }" >
-										토
-									</c:if>
-									<c:if test="${fn:contains(profile.possibleDays, 'sunday') }" >
-										<span class="text-primary">일</span>
-									</c:if>
-									<c:if test="${not fn:contains(profile.possibleDays, 'sunday') }" >
-										일
-									</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'monday') }" >
+											<span class="text-primary">월</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'monday') }" >
+											월
+										</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'tuesday') }" >
+											<span class="text-primary">화</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'tuesday') }" >
+											화
+										</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'wednesday') }" >
+											<span class="text-primary">수</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'wednesday') }" >
+											수
+										</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'thursday') }" >
+											<span class="text-primary">목</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'thursday') }" >
+											목
+										</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'friday') }" >
+											<span class="text-primary">금</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'friday') }" >
+											금
+										</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'saturday') }" >
+											<span class="text-primary">토</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'saturday') }" >
+											토
+										</c:if>
+										<c:if test="${fn:contains(profile.possibleDays, 'sunday') }" >
+											<span class="text-primary">일</span>
+										</c:if>
+										<c:if test="${not fn:contains(profile.possibleDays, 'sunday') }" >
+											일
+										</c:if>
 									</h5>
 							</div>
 							<!-- 희망 시급 -->
@@ -123,7 +123,6 @@
 			
 			<!-- 프로필 하단 정보 -->
 			<div class="p-3 mt-3">
-				<div>
 					<!-- 프로필 수정 버튼 -->
 					<a href="/user/profile_edit"><button type="button" class="btn btn-info float-right">수정</button></a>
 					<div class="d-flex">
@@ -135,63 +134,67 @@
 							</div>
 						</div>
 						<!-- 가능 활동 -->
-						<div class="ml-5">
-							<div>
-								<h4>가능 활동</h4>
-								<div class="d-flex">
-									<h5 class="font-weight-light">실내놀이</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">야외활동</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">등하원 돕기</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">책 읽기</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">밥 챙겨주기</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">간단 청소</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
+					<div class="ml-5">
+					
+						<c:if test="${fn:contains(profile.type, 'child') }" >
+						<div>
+							<h4>가능 활동</h4>
+							<div class="d-flex">
+								<h5 class="font-weight-light">실내놀이</h5>
+								<i class="bi bi-check-lg icon-font"></i>
 							</div>
-							<div>
-							<div>
-								<h4>가능 활동</h4>
-								<div class="d-flex">
-									<h5 class="font-weight-light">실내놀이</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">야외활동</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">등하원 돕기</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">책 읽기</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">밥 챙겨주기</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
-								<div class="d-flex">
-									<h5 class="font-weight-light">간단 청소</h5>
-									<i class="bi bi-check-lg"></i>
-								</div>
+							<div class="d-flex">
+								<h5 class="font-weight-light">야외활동</h5>
+								<i class="bi bi-check-lg icon-font"></i>
+							</div>
+							<div class="d-flex">
+								<h5 class="font-weight-light">등하원 돕기</h5>
+								<i class="bi bi-check-lg icon-font"></i>
+							</div>
+							<div class="d-flex">
+								<h5 class="font-weight-light">책 읽기</h5>
+								<i class="bi bi-check-lg icon-font"></i>
+							</div>
+							<div class="d-flex">
+								<h5 class="font-weight-light">밥 챙겨주기</h5>
+								<i class="bi bi-check-lg icon-font"></i>
+							</div>
+							<div class="d-flex">
+								<h5 class="font-weight-light">간단 청소</h5>
+								<i class="bi bi-check-lg icon-font"></i>
 							</div>
 						</div>
+						</c:if>
+						
+						<c:if test="${fn:contains(proifle.type, 'pet') }" >
+							<div>
+								<h4>가능 활동</h4>
+								<div class="d-flex">
+									<h5 class="font-weight-light">실내놀이</h5>
+									<i class="bi bi-check-lg icon-font"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">야외활동</h5>
+									<i class="bi bi-check-lg icon-font"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">등하원 돕기</h5>
+									<i class="bi bi-check-lg icon-font"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">책 읽기</h5>
+									<i class="bi bi-check-lg icon-font"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">밥 챙겨주기</h5>
+									<i class="bi bi-check-lg icon-font"></i>
+								</div>
+								<div class="d-flex">
+									<h5 class="font-weight-light">간단 청소</h5>
+									<i class="bi bi-check-lg icon-font"></i>
+								</div>
+							</div>
+						</c:if>
 					</div>
 				</div>
 			</div>
